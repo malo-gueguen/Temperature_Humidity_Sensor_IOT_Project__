@@ -1,3 +1,58 @@
+fetch('http://localhost:8000/getTemp.php')
+.then(response => response.json())
+.then(data => {
+  let html = '';
+  data.forEach(item => {
+    html += `${item.temperature} °C`;
+  });
+  html += '';
+  document.getElementById('temp').innerHTML = html;
+
+
+}).then(screen =>{
+  updateTemperature();
+  updateHumidty();
+})
+.catch(error => console.error("Error: ", error));
+
+fetch('http://localhost:8000/getHum.php')
+.then(response => response.json())
+.then(data => {
+  let html = '';
+  data.forEach(item => {
+    html += `${item.humidity} °C`;
+  });
+  html += '';
+  document.getElementById('hum').innerHTML = html;
+
+
+}).then(screen =>{
+  updateTemperature();
+  updateHumidty();
+ }).then(graph =>{
+  const ctx = document.getElementById('myChart');
+new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Température'],
+      datasets: [{
+        label: 'Température et Humidité', 
+        data: [valeurTemp],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          max : 100,
+        }
+      }
+    }
+});
+})
+.catch(error => console.error("Error: ", error));
+
 function mettreAJourHeure() {
   const maintenant = new Date();
 
@@ -40,11 +95,14 @@ function updateTemperature() {
     
     // Récupère le texte : ex. "21°C"
     let tempString = tempDiv.textContent;
-    
+    console.log(tempString)
+
     // Extrait la valeur numérique (21) de la chaîne "21°C"
     // parseInt s'arrête au premier caractère non numérique (ici, le symbole °)
     let tempValue = parseInt(tempString, 10);
-  
+    console.log(tempValue)
+    valeurTemp = tempValue;
+
     // Comparaison
     if (tempValue >= 25) {
       tempDiv.innerHTML = tempValue + "°C";
@@ -53,35 +111,36 @@ function updateTemperature() {
       tempDiv.textContent = tempValue + "°C";
       message.innerHTML ="☁️ Il fait doux !"
     } else {
-      tempDiv.textContent = tempValue + "°C!";
-      message.innerHTML ="❄️ Il fait beau !"
+      tempDiv.textContent = tempValue + "°C";
+      message.innerHTML ="❄️ Il fait froid !"
     }
   }
   function updateHumidty() {
     // Récupère l'élément contenant la température (ex. "21°C")
     let humDiv = document.getElementById('hum');
     let message = document.getElementById('message2');
-
+    let container = document.querySelector('#humContainer')
     // Récupère le texte : ex. "21°C"
     let humString = humDiv.textContent;
-    
     // Extrait la valeur numérique (21) de la chaîne "21°C"
     // parseInt s'arrête au premier caractère non numérique (ici, le symbole °)
     let humValue = parseInt(humString, 10);
-
+    valeurHum= humValue;
     // Comparaison
     if (humValue >= 60) {
         humDiv.textContent = humValue + "%";
         message.innerHTML ="Humide 💧"
-
     } else if (humValue >= 30 && humValue <= 60) {
         humDiv.textContent = humValue + "%";
         message.innerHTML ="Normal 🌤"
 
     } else {
         humDiv.textContent = humValue + "%";
+        console.log(container);
+        container.classList.add("hot")
         message.innerHTML ="Sec 🌵"
     }
   }
-updateTemperature();
-updateHumidty();
+
+let valeurTemp ;
+let valeurHum;

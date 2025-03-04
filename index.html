@@ -8,24 +8,28 @@
 </head>
 <body>
     <header>
-        <h1>Weather Informations</h1>
+        <h1>Informations Météo</h1>
         <div id="time"></div>
 
     </header>
     <section class="container">
-        <section class="temperature">
-            <div class="temp">
-                <p id="temp">30°C</p>
-                <div  id="message"></div>
+        <section class="container-data">
+            <section class="cercle">
+                    <p id="temp"> </p>
+                    <div  id="message"></div>
+            </section>
+            <div class="cercle" id="humContainer">
+                    <p id="hum"></p>
+                    <div id="message2"></div>
             </div>
         </section>
-        <section class="humidty">
-            <div  class="humidity">
-                <p id="hum">30</p>
-                <div  id="message2"></div>
-            </div>
+        <section class="chart">
+            <canvas id="myChart"></canvas>
         </section>
     </section>
+   
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>

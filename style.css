@@ -1,86 +1,119 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 .lato-thin {
-    font-family: "Lato", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-  }
-  
-  .lato-light {
-    font-family: "Lato", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  .lato-regular {
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .lato-bold {
-    font-family: "Lato", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .lato-black {
-    font-family: "Lato", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-  
-*{
-    padding: 0;
-    margin: 0;
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: normal;}
-
-body{
-    background: 
-    linear-gradient(rgb(26, 144, 194), rgb(186, 230, 253));    color: white;
-    height: 100vh;
+  font-family: "Lato", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
-header{
+.lato-light {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lato-regular {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato-bold {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lato-black {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background:
+    linear-gradient(rgb(26, 144, 194), rgb(186, 230, 253));
+  color: white;
+  height: 100%;
+  background-size: cover;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  flex-flow: column;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-data {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.chart {
+  margin: 5rem;
+}
+
+.cercle {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  font-size: 2rem;
+  border: 2px solid rgb(255, 255, 255);
+  width: 300px;
+  height: 300px;
+  margin: 50px;
+  border-radius: 100%;
+  text-align: center;
+}
+
+.hot{
+  background: linear-gradient(to bottom, rgba(255, 165, 0, 0.9), rgba(255, 215, 0, 0.9));
+}
+
+@media (max-width:1100px) {
+  .container-data {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width:650) {
+  header {
     display: flex;
     justify-content: center;
     margin: 2rem;
-    flex-flow: column;
+    flex-flow: row;
     align-items: center;
     font-size: 2rem;
-}
-.container{
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-}
-.temperature{
-        display: flex;
-        justify-content: center;
-        flex-flow: column;
-        align-items: center;
-        font-size: 2rem ;
-        border: 2px solid rgb(255, 255, 255);
-        width: 500px;
-        height: 500px;
-        margin: 50px;
-        border-radius: 100%;
-        text-align: center;
-}
+  }
 
-.humidty{
+  .container {
     display: flex;
-    justify-content: center;
     flex-flow: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+  }
 
-    font-size: 2rem ;
-    border: 2px solid rgb(255, 255, 255);
-    width: 500px;
-    height: 500px;
-    margin: 50px;
-    border-radius: 100%;
 }
