@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Temperature_Humidity_Sensor_IOT_Project
 # Consignes du Projet collaboratif
  
@@ -54,5 +53,3 @@ Votre application devra :
 	25/03/2025 (prévisionnel)
  
 =======
-# Temperature_Humidity_Sensor_IOT_Project_
->>>>>>> e4d7ba6b1a626c589f029550b2862cfec44c24b8
