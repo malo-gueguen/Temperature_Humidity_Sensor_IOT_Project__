@@ -11,7 +11,6 @@ fetch('http://localhost:8000/getTemp.php')
 
 }).then(screen =>{
   updateTemperature();
-  updateHumidty();
 })
 .catch(error => console.error("Error: ", error));
 
@@ -27,29 +26,47 @@ fetch('http://localhost:8000/getHum.php')
 
 
 }).then(screen =>{
-  updateTemperature();
   updateHumidty();
  }).then(graph =>{
   const ctx = document.getElementById('myChart');
-new Chart(ctx, {
+  new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['Température'],
-      datasets: [{
-        label: 'Température et Humidité', 
-        data: [valeurTemp],
-        borderWidth: 1
-      }]
+      // Ici, les labels correspondent aux différentes "abscisses" (par exemple, des points dans le temps)
+      labels: ['Point 1', 'Point 2', 'Point 3', 'Point 4'],
+      datasets: [
+        {
+          label: 'Température',
+          data: [valeurTemp, 10, 20, 60], // Valeurs de température
+          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderWidth: 3,
+          fill: false
+        },
+        {
+          label: 'Humidité',
+          data: [valeurHum, 50, 55, 60], // Valeurs d'humidité
+          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderWidth: 3,
+          fill: false
+        }
+      ]
     },
     options: {
+      hover: {
+        mode: 'index',
+        intersect: false
+      },
       scales: {
         y: {
           beginAtZero: true,
-          max : 100,
+          max: 100
         }
       }
     }
-});
+  });
+  
 })
 .catch(error => console.error("Error: ", error));
 
@@ -95,12 +112,10 @@ function updateTemperature() {
     
     // Récupère le texte : ex. "21°C"
     let tempString = tempDiv.textContent;
-    console.log(tempString)
 
     // Extrait la valeur numérique (21) de la chaîne "21°C"
     // parseInt s'arrête au premier caractère non numérique (ici, le symbole °)
     let tempValue = parseInt(tempString, 10);
-    console.log(tempValue)
     valeurTemp = tempValue;
 
     // Comparaison
@@ -136,11 +151,16 @@ function updateTemperature() {
 
     } else {
         humDiv.textContent = humValue + "%";
-        console.log(container);
-        container.classList.add("hot")
+        container.classList.add("hot");
+
         message.innerHTML ="Sec 🌵"
     }
   }
 
 let valeurTemp ;
 let valeurHum;
+
+// setTimeout(() => {
+//   console.log("Retardée d'une seconde.");
+//   location.reload();
+// }, "60000"); // toutes les minutes
