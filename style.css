@@ -39,20 +39,11 @@
 }
 
 body {
-  background:
-    linear-gradient(rgb(26, 144, 194), rgb(186, 230, 253));
+  background: linear-gradient(rgb(26, 144, 194), rgb(186, 230, 253));
   color: white;
   height: 100%;
+  width: 100%;
   background-size: cover;
-}
-
-header {
-  display: flex;
-  justify-content: center;
-  margin: 2rem;
-  flex-flow: column;
-  align-items: center;
-  font-size: 2rem;
 }
 
 .container {
@@ -66,10 +57,10 @@ header {
   display: flex;
   flex-flow: row;
   justify-content: center;
+  width: 100%;
 }
-
-.chart {
-  margin: 5rem;
+.hidden{
+  visibility: hidden;
 }
 
 .cercle {
@@ -85,7 +76,6 @@ header {
   border-radius: 100%;
   text-align: center;
   overflow: hidden;
-
 }
 
 .hot{
@@ -93,7 +83,73 @@ header {
 }
 
 
-@media (max-width:1100px) {
+header {
+  position: relative;    /* Permet le positionnement absolu des enfants */
+  text-align: center;    /* Centre le texte (ici le <h1>) */
+  padding: 20px;         /* Espacement interne */
+}
+
+.titre{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-size: 2rem;
+
+}
+
+.login-container {
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  max-width: 300px; 
+  border-radius: 10px;         
+  /* background-color: rgba(255, 255, 255, 0.2);  */
+  text-align: center;          
+  color: #fff;  
+  top: 20px;             /* Décalage depuis le haut du conteneur */
+  right: 10px;
+}
+
+input{
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.login-container button {
+  width: 50%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(to right, #3B9DD4, #2C8BB8);
+}
+
+.login-container button:hover {
+  border: 1px solid white;
+}
+
+@media (max-width: 1100px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .login-container {
+    /* Passage en position relative pour intégrer l'élément dans le flux normal */
+    position: relative;
+    margin-top: 20px;     /* Espacement entre le titre et le formulaire */
+    right: auto;         /* Réinitialise la position */
+    top: auto;
+    align-self: center;   /* Centre horizontalement l'élément */
+  }
   .container-data {
     display: flex;
     flex-flow: column;
@@ -102,21 +158,8 @@ header {
   }
 }
 
-@media (max-width:650) {
-  header {
-    display: flex;
-    justify-content: center;
-    margin: 2rem;
-    flex-flow: row;
-    align-items: center;
-    font-size: 2rem;
-  }
+@media (max-width:650px) {
 
-  .container {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-  }
+ 
 
 }

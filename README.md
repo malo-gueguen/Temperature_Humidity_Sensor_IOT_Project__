@@ -40,11 +40,10 @@ Dans URL de gestionnaire de cartes supplémentaires, ajoutez l'URL suivante :
 Allez dans Outils > Cartes > Gestionnaire de cartes, cherchez "ESP32" et installez la carte "esp32 by Espressif Systems".
 
 ## 3. Téléversement du Code
-Clonez ou téléchargez ce dépôt et ouvrez le fichier `station_meteo.ino` dans l'IDE Arduino. Téléversez-le sur votre microcontrôleur.
 
 ``` bash
-git clone https://github.com/nom_utilisateur/nom_projet.git
-cd nom_projet
+git clone https://github.com/LucasRaoul/Temperature_Humidity_Sensor_IOT_Project__.git
+cd Temperature_Humidity_Sensor_IOT_Project__
 ```
 ## ⚡ Cablage
 - DHT22 :
@@ -104,3 +103,5 @@ Lucas Raoul  - LucasRaoul
 Benjamin Léon - BENJ0UK
 
 Malo Gueguen - malo-gueguen
+
+Lilian Fischer - SystemD3v

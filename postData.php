@@ -1,40 +1,71 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+require __DIR__ . '/vendor/autoload.php';
+use Dotenv\Dotenv;
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-// Vérifier que la requête utilise bien la méthode POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer et valider les données envoyées
-    $temperature = isset($_POST['temperature']) ? floatval($_POST['temperature']) : null;
-    $humidity = isset($_POST['humidity']) ? floatval($_POST['humidity']) : null;
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    if (isset($_GET["temperature"]) && isset($_GET["humidite"])) {
+        $temperature = $_GET["temperature"];
+        $humidite = $_GET["humidite"];
 
-    if ($temperature === null || $humidity === null) {
-        echo json_encode(["error" => "Données manquantes"]);
-        exit;
+        try {
+            $dsn = sprintf(
+                "mysql:host=%s;dbname=%s;charset=utf8mb4",
+                $_ENV['DB_HOST'],
+                $_ENV['DB_NAME'],
+            );
+            $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+            $stmt = $pdo->prepare("INSERT INTO datas (Humidite, Temperature) VALUES (:humidite, :temperature)");
+            $stmt->execute([
+                ":humidite" => $humidite,
+                ":temperature" => $temperature
+            ]);
+       
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(["error" => "Failed to load data: " . $e->getMessage()]);
+        }
+
+        echo json_encode([
+            "message" => "✅ Données bien reçues en GET",
+            "temperature" => $temperature,
+            "humidite" => $humidite
+
+
+
+        ]);
+    } else {
+        echo json_encode(["error" => "🛑 Paramètres manquants"]);
     }
-
-    // Connexion à la base de données
-    $dsn = "mysql:host=localhost:3307;dbname=data_iot;charset=utf8mb4";
-    $username = "iot";
-    $password = "lucas";     // Remplacez par votre mot de passe
-
-    try {
-        $pdo = new PDO($dsn, $username, $password);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // Préparer la requête d'insertion
-        $sql = "INSERT INTO data (temperature, humidity) VALUES (:temperature, :humidity)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':temperature', $temperature);
-        $stmt->bindParam(':humidity', $humidity);
-        $stmt->execute();
-
-        echo json_encode(["success" => "Données insérées"]);
-    } catch (Exception $e) {
-        http_response_code(500);
-        echo json_encode(["error" => "Erreur : " . $e->getMessage()]);
-    }
-} else {
-    echo json_encode(["error" => "Mauvaise méthode HTTP"]);
+    exit();
 }
-?>
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $json = file_get_contents("php://input");
+    $data = json_decode($json, true);
+
+    if (!$data) {
+        echo json_encode(["error" => "⚠️ JSON invalide reçu", "brut" => $json]);
+        exit();
+    }
+
+    if (!isset($data["temperature"]) || !isset($data["humidite"])) {
+        echo json_encode(["error" => "⚠️ Données manquantes"]);
+        exit();
+    }
+
+    echo json_encode(["message" => "✅ Données bien reçues en POST", "data" => $data]);
+    exit();
+}
+
+echo json_encode(["error" => "Mauvaise méthode HTTP"]);
+exit();
