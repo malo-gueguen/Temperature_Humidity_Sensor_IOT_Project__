@@ -51,7 +51,7 @@ fetch('http://localhost:8000/getHum.php')
           borderWidth: 3,
           fill: false
         }
-      ]
+      ] 
     },
     options: {
       hover: {
