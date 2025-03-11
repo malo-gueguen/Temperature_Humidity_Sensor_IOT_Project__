@@ -19,7 +19,7 @@ try {
     $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $request = $pdo->query("SELECT Datadt FROM datas ORDER BY id_datas DESC");
+    $request = $pdo->query("SELECT Datadt FROM datas ORDER BY id_data DESC");
     $data = [];
     while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
         $data[] = [

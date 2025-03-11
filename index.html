@@ -14,11 +14,12 @@
         </div>
       
         <div class="login-container" id="login_box">
-            <form>
-              <input type="text" placeholder="Nom d'utilisateur" required />
-              <input type="password" placeholder="Mot de passe" required />
-              <button id="submit" type="button" >Se connecter</button>
-            </form>
+            <form id="loginForm">
+                <input id="inputUser" type="text" placeholder="Nom d'utilisateur" required />
+                <input id="inputPassword" type="password" placeholder="Mot de passe" required />
+                <button id="sendButton" type="button">Se connecter</button>
+              </form>
+              <button id="logoutButton" style="display: none;">Se déconnecter</button>
           </div>
     </header>
     <section class="container">
@@ -38,7 +39,11 @@
         <section class="chart">
             <div class="dataChange-container hidden" id="nbDataSelector">
                 <p>Entrez le nombre de données à afficher</p>
+<<<<<<< HEAD
                 <input type="text" title="chartData">
+=======
+                <input id="changeDataSelector" type="text" placeholder="Entrer pour valider" >
+>>>>>>> 570869b6eba86d14d32af069694c4b9f6215a417
             </div>
             <canvas id="myChart" width="800" height="400"></canvas>
         </section>
