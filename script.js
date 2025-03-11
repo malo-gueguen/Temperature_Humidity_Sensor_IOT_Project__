@@ -173,6 +173,7 @@ function createGraph() {
   console.log("Création du graphique");
   chart = new Chart(ctx, {
     type: "line",
+    
     data: {
       labels: valeurTime,
       datasets: [
@@ -264,7 +265,6 @@ logoutButton.addEventListener("click", async function() {
   loginForm.style.display = "block";
   nbDataSelector.classList.add("hidden");
     nbData = 50;
-
     await fetchTime();
     if (chart) {
       chart.destroy();

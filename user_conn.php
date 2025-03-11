@@ -20,7 +20,7 @@ try {
     $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $request = $pdo->query("SELECT * FROM Users");
-    while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
+    while ($row = $request->fetch(mode: PDO::FETCH_ASSOC)) {
 
         $data[] = [
             "password" => $row['password'],

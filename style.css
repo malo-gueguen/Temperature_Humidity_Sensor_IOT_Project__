@@ -142,7 +142,10 @@ input{
 
 }
 
-
+.mychart{
+  width:"800px";
+  height:"400px";
+}
 
 @media (max-width: 1100px) {
   header {
@@ -186,7 +189,5 @@ input{
 }
 
 @media (max-width:650px) {
-
- 
 
 }

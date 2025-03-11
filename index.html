@@ -39,9 +39,12 @@
         <section class="chart">
             <div class="dataChange-container hidden" id="nbDataSelector">
                 <p>Entrez le nombre de données à afficher</p>
-                <input id="changeDataSelector" type="text" placeholder="Entrer pour valider" >
+                <input id="changeDataSelector" type="text" placeholder="Entrer pour valider" min="1" max="500">
             </div>
-            <canvas id="myChart" width="800" height="400"></canvas>
+            <div class="chart">
+                <canvas id="myChart"></canvas>
+
+            </div>
         </section>
     </section>
     <div id="specialEffectsToggleDiv">
