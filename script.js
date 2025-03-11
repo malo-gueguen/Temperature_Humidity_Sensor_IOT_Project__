@@ -6,11 +6,10 @@ let chart;
 // let inputUser = document.getElementById("inputUser").textContent;
 // let inputPassword = document.getElementById("inputPassword").textContent;
 let sendButton = document.getElementById("sendButton")
+let notifPopUp = true;
 
 
-
-
-let nbData = 50;
+let nbData=50;
 let labelsGraph = [];
 for (let i = 0; i < nbData; i++) {
   labelsGraph.push("-");
@@ -103,13 +102,14 @@ async function fetchConnexion() {
       if( inputUser == item.user && inputPassword == item.password) {
         connexion();
         console.log("done")
-      } 
+      } else {
+        alert("Le nom de compte ou le mots de passe ne correspond pas, réessayer");
+      }
     });
   } catch (error) {
     console.error("Error in fetchConnexion: ", error);
   }
 }
-
 
 
 function updateTemperature() {
@@ -121,6 +121,10 @@ function updateTemperature() {
   if (tempValue >= 25) {
     tempDiv.innerHTML = tempValue + "°C";
     message.innerHTML = "☀️ Il fait beau !";
+    if(notifPopUp == true){
+      notification();
+      notifPopUp = false;
+    }
   } else if (tempValue >= 10) {
     tempDiv.textContent = tempValue + "°C";
     message.innerHTML = "☁️ Il fait doux !";
@@ -203,7 +207,7 @@ function createGraph() {
       scales: {
         y: {
           beginAtZero: true,
-          max: 100,
+          min: 1,
           ticks: {
             stepSize: 5,
           },
@@ -236,12 +240,8 @@ setInterval(async () => {
 }, 10000);
 
 
-    
-
-
 const loginForm = document.getElementById("loginForm");
 const logoutButton = document.getElementById("logoutButton");
-
 
 
 function connexion(){
@@ -251,13 +251,50 @@ function connexion(){
   nbDataSelector.classList.remove("hidden");
 }
 
+// Au chargement, demander la permission et stocker le résultat
+let permissionGranted = false;
 
+Notification.requestPermission().then((permission) => {
+  if (permission === "granted") {
+    console.log("Permission notifications accordée");
+    permissionGranted = true;
+  } else {
+    console.log("Permission refusée ou ignorée");
+  }
+});
+
+function createNotification() {
+  const img = "/benjouk.jpg";
+  const text = "Il fait chaud";
+  const notification = new Notification("Le temps est : ",{
+    body: text,
+    icon: img,
+  });
+}
+
+function notification(){
+  if (!permissionGranted) {
+    console.log("Permission non accordée, demande en cours...");
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted" ) {  
+        if(valeurTemp > 25 ){
+          createNotification();
+        } 
+      } else {
+        console.log("L'utilisateur a refusé ou ignoré la demande de notification.");
+      }
+    }); 
+  } else {
+    createNotification();
+}
+}
 sendButton.addEventListener("click", function() {
   fetchConnexion();
-});
+  });
 
 
 logoutButton.addEventListener("click", async function() {
+
   logoutButton.style.display = "none";
   loginForm.style.display = "block";
   nbDataSelector.classList.add("hidden");
@@ -268,7 +305,6 @@ logoutButton.addEventListener("click", async function() {
     }
     createGraph();
 });
-
 
 
 let changeDataSelector = document.getElementById("changeDataSelector");

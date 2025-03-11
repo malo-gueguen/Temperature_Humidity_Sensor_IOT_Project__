@@ -39,6 +39,7 @@
   
 }
 
+
 body {
   background: linear-gradient(rgb(26, 144, 194), rgb(186, 230, 253));
   color: white;
@@ -138,6 +139,7 @@ input{
 
 
 #logoutButton{
+  display: none;
   width: 100%;
   margin-right: 20px;
 }

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const popup = document.createElement("div");
         popup.textContent = text;
         popup.style.position = "absolute";
-        popup.style.fontSize = "2rem";
+        popup.style.fontSize = "5rem";
         popup.style.color = "hsl(" + Math.random() * 360 + ", 100%, 60%)";
         popup.style.opacity = "1";
         
@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
         
         container.appendChild(popup);
 
-        const moveX = (Math.random() - 0.5) * 40;
-        const moveY = -50 - Math.random() * 30;
+        const moveX = (Math.random() - 0.5) * 800;
+        const moveY = -50 - (Math.random() - 0.5) * 600;
         const duration = 400 + Math.random() * 300;
         
         popup.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
