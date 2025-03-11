@@ -82,34 +82,34 @@ async function fetchHumidite() {
     console.error("Error in fetchHumidite: ", error);
   }
 }
-async function fetchConnexion() {
-  try {
-    const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
+// async function fetchConnexion() {
+//   try {
+//     const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
+//       method: "GET",
+//       headers: { "Content-Type": "application/json" },
+//     });
 
-    const data = await response.json();
-    inputUser = document.getElementById("inputUser").value;
-    inputPassword = document.getElementById("inputPassword").value;
+//     const data = await response.json();
+//     inputUser = document.getElementById("inputUser").value;
+//     inputPassword = document.getElementById("inputPassword").value;
 
-    data.forEach((item) => {
+//     data.forEach((item) => {
 
-      console.log(item.user)
-      console.log(item.password)
-      console.log(inputUser)
-      console.log(inputPassword)
-      if( inputUser == item.user && inputPassword == item.password) {
-        connexion();
-        console.log("done")
-      } else {
-        alert("Le nom de compte ou le mots de passe ne correspond pas, réessayer");
-      }
-    });
-  } catch (error) {
-    console.error("Error in fetchConnexion: ", error);
-  }
-}
+//       console.log(item.user)
+//       console.log(item.password)
+//       console.log(inputUser)
+//       console.log(inputPassword)
+//       if( inputUser == item.user && inputPassword == item.password) {
+//         connexion();
+//         console.log("done")
+//       } else {
+//         alert("Le nom de compte ou le mots de passe ne correspond pas, réessayer");
+//       }
+//     });
+//   } catch (error) {
+//     console.error("Error in fetchConnexion: ", error);
+//   }
+// }
 
 
 function updateTemperature() {
@@ -121,10 +121,10 @@ function updateTemperature() {
   if (tempValue >= 25) {
     tempDiv.innerHTML = tempValue + "°C";
     message.innerHTML = "☀️ Il fait beau !";
-    if(notifPopUp == true){
-      notification();
-      notifPopUp = false;
-    }
+    // if(notifPopUp == true){
+    //   // notification();
+    //   notifPopUp = false;
+    // }
   } else if (tempValue >= 10) {
     tempDiv.textContent = tempValue + "°C";
     message.innerHTML = "☁️ Il fait doux !";
@@ -263,34 +263,34 @@ Notification.requestPermission().then((permission) => {
   }
 });
 
-function createNotification() {
-  const img = "/benjouk.jpg";
-  const text = "Il fait chaud";
-  const notification = new Notification("Le temps est : ",{
-    body: text,
-    icon: img,
-  });
-}
+// function createNotification() {
+//   const img = "/benjouk.jpg";
+//   const text = "Il fait chaud";
+//   const notification = new Notification("Le temps est : ",{
+//     body: text,
+//     icon: img,
+//   });
+// }
 
-function notification(){
-  if (!permissionGranted) {
-    console.log("Permission non accordée, demande en cours...");
-    Notification.requestPermission().then((permission) => {
-      if (permission === "granted" ) {  
-        if(valeurTemp > 25 ){
-          createNotification();
-        } 
-      } else {
-        console.log("L'utilisateur a refusé ou ignoré la demande de notification.");
-      }
-    }); 
-  } else {
-    createNotification();
-}
-}
-sendButton.addEventListener("click", function() {
-  fetchConnexion();
-  });
+// function notification(){
+//   if (!permissionGranted) {
+//     console.log("Permission non accordée, demande en cours...");
+//     Notification.requestPermission().then((permission) => {
+//       if (permission === "granted" ) {  
+//         if(valeurTemp > 25 ){
+//           createNotification();
+//         } 
+//       } else {
+//         console.log("L'utilisateur a refusé ou ignoré la demande de notification.");
+//       }
+//     }); 
+//   } else {
+//     createNotification();
+// }
+// }
+// sendButton.addEventListener("click", function() {
+//   fetchConnexion();
+//   });
 
 
 logoutButton.addEventListener("click", async function() {
