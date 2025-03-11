@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>IoT_Project</title>
-  </head>
-  <body class="body">
-    <header>
-      <div class="titre">
-        <h1>Informations Météo</h1>
-        <div id="time"></div>
-      </div>
 
-      <div class="login-container" id="login_box">
-        <form id="loginForm">
-          <!-- <input
-            id="inputUser"
-            type="text"
-            placeholder="Nom d'utilisateur"
-            required
-          />
-          <input
-            id="inputPassword"
-            type="password"
-            placeholder="Mot de passe"
-            required
-          /> -->
-          <a href="modal.html" id="sendButton" type="button">Se connecter</a>
-        </form>
-        <button id="logoutButton">Se déconnecter</button>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>IoT_Project</title>
+</head>
+
+<body class="body">
+    <header>
+        <div class="titre">
+            <h1>Informations Météo</h1>
+            <div id="time"></div>
+        </div>
+
+        <div class="login-container" id="login_box">
+            <form id="loginForm">
+                <!-- <input id="inputUser" type="text" placeholder="Nom d'utilisateur" required />
+                <input id="inputPassword" type="password" placeholder="Mot de passe" required /> -->
+                <button id="sendButton" type="button">Se connecter</button>
+              </form>
+              <button id="logoutButton">Se déconnecter</button>
+          </div>
     </header>
     <section class="container">
-      <section class="container-data">
-        <section class="cercle">
-          <p id="temp"></p>
-          <div id="message"></div>
+        <section class="container-data">
+            <section class="cercle">
+                <p id="temp"> </p>
+                <div id="message"></div>
+            </section>
+            <div class="cercle" id="humContainer">
+                <div>
+                    <p id="hum"></p>
+                    <div id="message2"></div>
+                </div>
+
+            </div>
         </section>
         <div class="cercle" id="humContainer">
           <div>
@@ -64,5 +64,7 @@
     <script src="script.js"></script>
     <script src="particles.js"></script>
     <script src="keyboardEffect.js"></script>
-  </body>
+
+</body>
+
 </html>
