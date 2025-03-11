@@ -98,10 +98,10 @@ LED- → GND
   - Redémarrez votre PC après installation.
 2. ...
 ## 👨‍💻 Auteurs
-Lucas Raoul  - LucasRaoul
+Lucas Raoul  - @LucasRaoul
 
-Benjamin Léon - BENJ0UK
+Benjamin Léon - @BENJ0UK
 
-Malo Gueguen - malo-gueguen
+Malo Gueguen - @malo-gueguen
 
-Lilian Fischer - SystemD3v
+Lilian Fischer - @SystemD3v
