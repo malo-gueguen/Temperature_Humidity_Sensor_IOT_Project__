@@ -19,17 +19,16 @@ try {
     );
     $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $request = $pdo->query("SELECT Temperature FROM datas ORDER BY id_datas DESC");
-    $data = [];
+    $user_input = $_POST['User_name'];
+    $request = $pdo->query("SELECT * FROM Users");
     while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
         $data[] = [
-            "password" => $row['User_password'],
-            "username" => $row['User_name'],
+            "password" => $row['password'],
+            "users" => $row['user']
         ];
     }
+    
 
-    echo json_encode($data);
 
 } catch (Exception $e) {
     http_response_code(500);

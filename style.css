@@ -94,7 +94,6 @@ header {
   flex-flow: column;
   align-items: center;
   font-size: 2rem;
-
 }
 
 .login-container {
@@ -122,6 +121,7 @@ input{
 .login-container button {
   width: 50%;
   padding: 10px;
+  margin-bottom: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -130,9 +130,19 @@ input{
   background: linear-gradient(to right, #3B9DD4, #2C8BB8);
 }
 
+
 .login-container button:hover {
   border: 1px solid white;
 }
+
+
+#logoutButton{
+  width: 100%;
+  margin-right: 20px;
+
+}
+
+
 
 @media (max-width: 1100px) {
   header {
