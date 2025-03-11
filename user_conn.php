@@ -21,11 +21,14 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $request = $pdo->query("SELECT * FROM Users");
     while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
+
         $data[] = [
             "password" => $row['password'],
             "user" => $row['user']
+            
         ];
     }
+    echo json_encode($data);
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(["error" => "Failed to load data: " . $e->getMessage()]);
