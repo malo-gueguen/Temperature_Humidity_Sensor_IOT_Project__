@@ -168,6 +168,7 @@ input{
   }
 }
 
+<<<<<<< HEAD
 #specialEffectsToggleDiv {
   display: flex;
   width: 100%;
@@ -185,6 +186,8 @@ input{
   font-size: large;
 }
 
+=======
+>>>>>>> 29adcfb76e23caf7899fde9ec514ca0ce2c77dd1
 @media (max-width:650px) {
 
 }
