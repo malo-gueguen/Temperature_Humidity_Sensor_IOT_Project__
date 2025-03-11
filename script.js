@@ -246,9 +246,6 @@ const logoutButton = document.getElementById("logoutButton");
 
 function connexion(){
   let nbDataSelector = document.getElementById("nbDataSelector");
-  let userInput = document.getElementById("userInput");
-  let passwordInput = document.getElementById("passwordInput");
-  let submit = document.getElementById("submit");
   loginForm.style.display = "none";
   logoutButton.style.display = "block";
   nbDataSelector.classList.remove("hidden");
