@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const popup = document.createElement("div");
         popup.textContent = text;
         popup.style.position = "absolute";
-        popup.style.fontSize = "5rem";
+        popup.style.fontSize = "10rem";
         popup.style.color = "hsl(" + Math.random() * 360 + ", 100%, 60%)";
         popup.style.opacity = "1";
         
