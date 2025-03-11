@@ -24,7 +24,6 @@ try {
     while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
         $data[] = [
             "Temperature" => $row['Temperature'],
-
         ];
     }
 

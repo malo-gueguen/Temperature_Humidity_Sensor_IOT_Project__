@@ -3,30 +3,36 @@ let valeurHum;
 let valeurTime;
 let ctx = document.getElementById("myChart").getContext("2d");
 let chart;
+let inputUser = document.getElementById("inputUser").textContent;
+let inputPassword = document.getElementById("inputPassword").textContent;
+let sendButton = document.getElementById("sendButton")
 
-let nbData = 50; 
+
+
+
+let nbData = 50;
 let labelsGraph = [];
-for (let i=0; i< nbData; i++){
-  labelsGraph.push("-")
+for (let i = 0; i < nbData; i++) {
+  labelsGraph.push("-");
 }
 
 async function fetchTemperature() {
   try {
     const response = await fetch("https://iotcesi.alwaysdata.net/getTemp.php", {
       method: "GET",
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     });
     const data = await response.json();
-    let htmlvar2 = '';
+    let htmlvar2 = "";
     valeurTemp = [];
-    data.forEach(item => {
+    data.forEach((item) => {
       htmlvar2 += `${item.Temperature} °C `;
       if (valeurTemp.length < nbData) {
         valeurTemp.push(item.Temperature);
       }
     });
     console.log(`Température : ${valeurTemp}`);
-    document.getElementById('temp').innerHTML = htmlvar2;
+    document.getElementById("temp").innerHTML = htmlvar2;
     updateTemperature();
   } catch (error) {
     console.error("Error in fetchTemperature: ", error);
@@ -37,11 +43,11 @@ async function fetchTime() {
   try {
     const response = await fetch("https://iotcesi.alwaysdata.net/getTime.php", {
       method: "GET",
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     });
     const data = await response.json();
     valeurTime = [];
-    data.forEach(item => {
+    data.forEach((item) => {
       if (valeurTime.length < nbData) {
         valeurTime.push(item.Time);
       }
@@ -55,19 +61,19 @@ async function fetchHumidite() {
   try {
     const response = await fetch("https://iotcesi.alwaysdata.net/getHum.php", {
       method: "GET",
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     });
     const data = await response.json();
-    let htmlvar = '';
+    let htmlvar = "";
     valeurHum = [];
-    data.forEach(item => {
+    data.forEach((item) => {
       htmlvar += `${item.Humidite} °C `;
       if (valeurHum.length < nbData) {
         valeurHum.push(item.Humidite);
       }
     });
     console.log(`Humidité : ${valeurHum}`);
-    document.getElementById('hum').innerHTML = htmlvar;
+    document.getElementById("hum").innerHTML = htmlvar;
     updateHumidty();
 
     // Mise à jour de l'heure
@@ -77,13 +83,34 @@ async function fetchHumidite() {
     console.error("Error in fetchHumidite: ", error);
   }
 }
-
+async function fetchConnexion() {
+  try {
+    console.log("fonction")
+    const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const data = await response.json();
+    inputUser = document.getElementById("inputUser").textContent;
+    inputPassword = document.getElementById("inputPassword").textContent;
+   
+    data.forEach((item) => {
+      console.log(item.users)
+      console.log(item.password)
+      if( inputUser == item.users && inputPassword == item.password) {
+        connexion();
+      } 
+    });
+  } catch (error) {
+    console.error("Error in fetchTemperature: ", error);
+  }
+}
 function updateTemperature() {
-  let tempDiv = document.getElementById('temp');
-  let message = document.getElementById('message');
+  let tempDiv = document.getElementById("temp");
+  let message = document.getElementById("message");
   let tempString = tempDiv.textContent;
   let tempValue = parseInt(tempString, 10);
-  
+
   if (tempValue >= 25) {
     tempDiv.innerHTML = tempValue + "°C";
     message.innerHTML = "☀️ Il fait beau !";
@@ -97,12 +124,12 @@ function updateTemperature() {
 }
 
 function updateHumidty() {
-  let humDiv = document.getElementById('hum');
-  let message = document.getElementById('message2');
-  let container = document.querySelector('#humContainer');
+  let humDiv = document.getElementById("hum");
+  let message = document.getElementById("message2");
+  let container = document.querySelector("#humContainer");
   let humString = humDiv.textContent;
   let humValue = parseInt(humString, 10);
-  
+
   if (humValue >= 60) {
     humDiv.textContent = humValue + "%";
     message.innerHTML = "Humide 💧";
@@ -121,17 +148,18 @@ function updateHumidty() {
 function mettreAJourHeure() {
   const maintenant = new Date();
   const optionsDate = {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   };
-  let dateFormatee = maintenant.toLocaleDateString('fr-FR', optionsDate);
-  let morceaux = dateFormatee.split(' ');
+  let dateFormatee = maintenant.toLocaleDateString("fr-FR", optionsDate);
+  let morceaux = dateFormatee.split(" ");
   morceaux[0] = morceaux[0].charAt(0).toUpperCase() + morceaux[0].slice(1);
-  dateFormatee = morceaux.join(' ');
-  const heureFormatee = maintenant.toLocaleTimeString('fr-FR');
-  document.getElementById('time').textContent = dateFormatee + ' — ' + heureFormatee;
+  dateFormatee = morceaux.join(" ");
+  const heureFormatee = maintenant.toLocaleTimeString("fr-FR");
+  document.getElementById("time").textContent =
+    dateFormatee + " — " + heureFormatee;
 }
 
 function createGraph() {
@@ -143,7 +171,7 @@ function createGraph() {
       datasets: [
         {
           label: "Température",
-          data: valeurTemp, 
+          data: valeurTemp,
           borderColor: "rgba(255, 99, 132, 1)",
           backgroundColor: "rgba(255, 99, 132, 0.2)",
           borderWidth: 3,
@@ -169,9 +197,9 @@ function createGraph() {
           beginAtZero: true,
           max: 100,
           ticks: {
-            stepSize: 5
-          }
-        }
+            stepSize: 5,
+          },
+        },
       },
     },
   });
@@ -200,11 +228,58 @@ setInterval(async () => {
 }, 10000);
 
 
+    
 
 
-let loginBox = document.getElementById("login_box");
-loginBox.addEventListener("click", function() {
-  let nbDataSelector = document.getElementsById("nbDataSelector")
+const loginForm = document.getElementById("loginForm");
+const logoutButton = document.getElementById("logoutButton");
+
+
+
+function connexion(){
+  let nbDataSelector = document.getElementById("nbDataSelector");
+  let userInput = document.getElementById("userInput");
+  let passwordInput = document.getElementById("passwordInput");
+  let submit = document.getElementById("submit");
+  loginForm.style.display = "none";
+  logoutButton.style.display = "block";
   nbDataSelector.classList.remove("hidden");
-})
+}
+
+
+sendButton.addEventListener("click", function() {
+  fetchConnexion();
+});
+
+
+logoutButton.addEventListener("click", async function() {
+  logoutButton.style.display = "none";
+  loginForm.style.display = "block";
+  nbDataSelector.classList.add("hidden");
+    nbData = 50;
+
+    await fetchTime();
+    if (chart) {
+      chart.destroy();
+    }
+    createGraph();
+});
+
+
+
+let changeDataSelector = document.getElementById("changeDataSelector");
+
+changeDataSelector.addEventListener("keypress", async function (e) {
+  let value = changeDataSelector.value;
+  if (e.key === "Enter") {
+    nbData = value;
+    await fetchTime();
+    if (chart) {
+      chart.destroy();
+    }
+    createGraph();
+  }
+});
+
+
 
