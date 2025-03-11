@@ -5,7 +5,7 @@ let ctx = document.getElementById("myChart").getContext("2d");
 let chart;
 // let inputUser = document.getElementById("inputUser").textContent;
 // let inputPassword = document.getElementById("inputPassword").textContent;
-let sendButton = document.getElementById("sendButton")
+//let sendButton = document.getElementById("sendButton")
 let notifPopUp = true;
 
 
@@ -83,6 +83,7 @@ async function fetchHumidite() {
   }
 }
 async function fetchConnexion() {
+  return
   try {
     const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
       method: "GET",
@@ -90,21 +91,21 @@ async function fetchConnexion() {
     });
 
     const data = await response.json();
-    inputUser = document.getElementById("inputUser").value;
-    inputPassword = document.getElementById("inputPassword").value;
+    //inputUser = document.getElementById("inputUser").value;
+    //inputPassword = document.getElementById("inputPassword").value;
 
     data.forEach((item) => {
 
       console.log(item.user)
       console.log(item.password)
-      console.log(inputUser)
-      console.log(inputPassword)
-      if( inputUser == item.user && inputPassword == item.password) {
-        connexion();
-        console.log("done")
-      } else {
-        alert("Le nom de compte ou le mots de passe ne correspond pas, réessayer");
-      }
+      // console.log(inputUser)
+      //console.log(inputPassword)
+      // if( inputUser == item.user && inputPassword == item.password) {
+      //   connexion();
+      //   console.log("done")
+      // } else {
+      //   alert("Le nom de compte ou le mots de passe ne correspond pas, réessayer");
+      // }
     });
   } catch (error) {
     console.error("Error in fetchConnexion: ", error);
@@ -288,9 +289,9 @@ function notification(){
     createNotification();
 }
 }
-sendButton.addEventListener("click", function() {
-  fetchConnexion();
-  });
+// sendButton.addEventListener("click", function() {
+//   fetchConnexion();
+//   });
 
 
 logoutButton.addEventListener("click", async function() {
