@@ -82,19 +82,19 @@ async function fetchHumidite() {
     console.error("Error in fetchHumidite: ", error);
   }
 }
-async function fetchConnexion() {
-  return
-  try {
-    const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
+// async function fetchConnexion() {
+//   return
+//   try {
+//     const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
+//       method: "GET",
+//       headers: { "Content-Type": "application/json" },
+//     });
 
     const data = await response.json();
     //inputUser = document.getElementById("inputUser").value;
     //inputPassword = document.getElementById("inputPassword").value;
 
-//     data.forEach((item) => {
+// //     data.forEach((item) => {
 
       console.log(item.user)
       console.log(item.password)
