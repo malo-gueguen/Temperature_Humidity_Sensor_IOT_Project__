@@ -14,36 +14,24 @@
             <h1>Informations Météo</h1>
             <div id="time"></div>
         </div>
-
         <div class="login-container" id="login_box">
             <form id="loginForm">
-                <!-- <input id="inputUser" type="text" placeholder="Nom d'utilisateur" required />
-                <input id="inputPassword" type="password" placeholder="Mot de passe" required /> -->
-                <button id="sendButton" type="button">Se connecter</button>
+                <button id="loginButton" type="button">Se connecter</button>
               </form>
               <button id="logoutButton">Se déconnecter</button>
           </div>
     </header>
     <section class="container">
         <section class="container-data">
-            <section class="cercle">
+            <div class="cercle">
                 <p id="temp"> </p>
                 <div id="message"></div>
-            </section>
+            </div>
             <div class="cercle" id="humContainer">
-                <div>
                     <p id="hum"></p>
                     <div id="message2"></div>
-                </div>
-
             </div>
         </section>
-        <div class="cercle" id="humContainer">
-          <div>
-            <p id="hum"></p>
-            <div id="message2"></div>
-          </div>
-        </div>
       </section>
       <section class="chart">
         <div class="dataChange-container hidden" id="nbDataSelector">
@@ -56,7 +44,9 @@
             max="500"
           />
         </div>
-        <canvas id="myChart" width="800" height="400"></canvas>
+        <div class="chart-wrapper">        
+          <canvas id="myChart"></canvas>
+        </div>
       </section>
     </section>
 

@@ -149,7 +149,6 @@ function createGraph() {
   console.log("Création du graphique");
   chart = new Chart(ctx, {
     type: "line",
-    
     data: {
       labels: valeurTime,
       datasets: [
@@ -235,14 +234,14 @@ Notification.requestPermission().then((permission) => {
   }
 });
 
-// function createNotification() {
-//   const img = "/benjouk.jpg";
-//   const text = "Il fait chaud";
-//   const notification = new Notification("Le temps est : ",{
-//     body: text,
-//     icon: img,
-//   });
-// }
+function createNotification() {
+  const img = "/benjouk.jpg";
+  const text = "Il fait chaud";
+  const notification = new Notification("Le temps est : ",{
+    body: text,
+    icon: img,
+  });
+}
 
 function notification(){
   if (!permissionGranted) {
@@ -260,13 +259,8 @@ function notification(){
     createNotification();
 }
 }
-// sendButton.addEventListener("click", function() {
-//   fetchConnexion();
-//   });
-
 
 logoutButton.addEventListener("click", async function() {
-
   logoutButton.style.display = "none";
   loginForm.style.display = "block";
   nbDataSelector.classList.add("hidden");
@@ -292,6 +286,3 @@ changeDataSelector.addEventListener("keypress", async function (e) {
     createGraph();
   }
 });
-
-
-

@@ -26,3 +26,6 @@ async function fetchConnexion() {
     }
 }
 
+connexion.addEventListener("click", function() {
+    fetchConnexion();
+  });
