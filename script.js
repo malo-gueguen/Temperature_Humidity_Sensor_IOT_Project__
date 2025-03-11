@@ -95,14 +95,14 @@ async function fetchConnexion() {
     inputPassword = document.getElementById("inputPassword").textContent;
    
     data.forEach((item) => {
-      console.log(item.users)
+      console.log(item.user)
       console.log(item.password)
-      if( inputUser == item.users && inputPassword == item.password) {
+      if( inputUser == item.user && inputPassword == item.password) {
         connexion();
       } 
     });
   } catch (error) {
-    console.error("Error in fetchTemperature: ", error);
+    console.error("Error in fetchConnexion: ", error);
   }
 }
 function updateTemperature() {

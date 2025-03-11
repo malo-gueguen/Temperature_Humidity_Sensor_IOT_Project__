@@ -19,17 +19,13 @@ try {
     );
     $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $user_input = $_POST['User_name'];
     $request = $pdo->query("SELECT * FROM Users");
     while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
         $data[] = [
             "password" => $row['password'],
-            "users" => $row['user']
+            "user" => $row['user']
         ];
     }
-    
-
-
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(["error" => "Failed to load data: " . $e->getMessage()]);
