@@ -158,6 +158,23 @@ input{
   }
 }
 
+#specialEffectsToggleDiv {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 25px;
+  margin: 25px
+}
+
+#specialEffectsToggleButton {
+  position: absolute;
+  border: 1px solid black;
+  background: none;
+  height: 5%;
+  width: 10%;
+  font-size: large;
+}
+
 @media (max-width:650px) {
 
  
