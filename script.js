@@ -5,7 +5,7 @@ let ctx = document.getElementById("myChart").getContext("2d");
 let chart;
 // let inputUser = document.getElementById("inputUser").textContent;
 // let inputPassword = document.getElementById("inputPassword").textContent;
-let sendButton = document.getElementById("sendButton")
+//let sendButton = document.getElementById("sendButton")
 let notifPopUp = true;
 
 
@@ -82,34 +82,35 @@ async function fetchHumidite() {
     console.error("Error in fetchHumidite: ", error);
   }
 }
-// async function fetchConnexion() {
-//   try {
-//     const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
-//       method: "GET",
-//       headers: { "Content-Type": "application/json" },
-//     });
+async function fetchConnexion() {
+  return
+  try {
+    const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
 
-//     const data = await response.json();
-//     inputUser = document.getElementById("inputUser").value;
-//     inputPassword = document.getElementById("inputPassword").value;
+    const data = await response.json();
+    //inputUser = document.getElementById("inputUser").value;
+    //inputPassword = document.getElementById("inputPassword").value;
 
 //     data.forEach((item) => {
 
-//       console.log(item.user)
-//       console.log(item.password)
-//       console.log(inputUser)
-//       console.log(inputPassword)
-//       if( inputUser == item.user && inputPassword == item.password) {
-//         connexion();
-//         console.log("done")
-//       } else {
-//         alert("Le nom de compte ou le mots de passe ne correspond pas, réessayer");
-//       }
-//     });
-//   } catch (error) {
-//     console.error("Error in fetchConnexion: ", error);
-//   }
-// }
+      console.log(item.user)
+      console.log(item.password)
+      // console.log(inputUser)
+      //console.log(inputPassword)
+      // if( inputUser == item.user && inputPassword == item.password) {
+      //   connexion();
+      //   console.log("done")
+      // } else {
+      //   alert("Le nom de compte ou le mots de passe ne correspond pas, réessayer");
+      // }
+    });
+  } catch (error) {
+    console.error("Error in fetchConnexion: ", error);
+  }
+}
 
 
 function updateTemperature() {
@@ -272,22 +273,22 @@ Notification.requestPermission().then((permission) => {
 //   });
 // }
 
-// function notification(){
-//   if (!permissionGranted) {
-//     console.log("Permission non accordée, demande en cours...");
-//     Notification.requestPermission().then((permission) => {
-//       if (permission === "granted" ) {  
-//         if(valeurTemp > 25 ){
-//           createNotification();
-//         } 
-//       } else {
-//         console.log("L'utilisateur a refusé ou ignoré la demande de notification.");
-//       }
-//     }); 
-//   } else {
-//     createNotification();
-// }
-// }
+function notification(){
+  if (!permissionGranted) {
+    console.log("Permission non accordée, demande en cours...");
+    Notification.requestPermission().then((permission) => {
+      if (permission === "granted" ) {  
+        if(valeurTemp > 25 ){
+          createNotification();
+        } 
+      } else {
+        console.log("L'utilisateur a refusé ou ignoré la demande de notification.");
+      }
+    }); 
+  } else {
+    createNotification();
+}
+}
 // sendButton.addEventListener("click", function() {
 //   fetchConnexion();
 //   });
