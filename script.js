@@ -93,10 +93,10 @@ function updateTemperature() {
   if (tempValue >= 25) {
     tempDiv.innerHTML = tempValue + "°C";
     message.innerHTML = "☀️ Il fait beau !";
-    // if(notifPopUp == true){
-    //   // notification();
-    //   notifPopUp = false;
-    // }
+    if(notifPopUp == true){
+      // notification();
+      notifPopUp = false;
+    }
   } else if (tempValue >= 10) {
     tempDiv.textContent = tempValue + "°C";
     message.innerHTML = "☁️ Il fait doux !";
@@ -216,12 +216,6 @@ const loginForm = document.getElementById("loginForm");
 const logoutButton = document.getElementById("logoutButton");
 
 
-function connexion(){
-  let nbDataSelector = document.getElementById("nbDataSelector");
-  loginForm.style.display = "none";
-  logoutButton.style.display = "block";
-  nbDataSelector.classList.remove("hidden");
-}
 
 // Au chargement, demander la permission et stocker le résultat
 let permissionGranted = false;
@@ -235,14 +229,14 @@ Notification.requestPermission().then((permission) => {
   }
 });
 
-// function createNotification() {
-//   const img = "/benjouk.jpg";
-//   const text = "Il fait chaud";
-//   const notification = new Notification("Le temps est : ",{
-//     body: text,
-//     icon: img,
-//   });
-// }
+function createNotification() {
+  const img = "/benjouk.jpg";
+  const text = "Il fait chaud";
+  const notification = new Notification("Le temps est : ",{
+    body: text,
+    icon: img,
+  });
+}
 
 function notification(){
   if (!permissionGranted) {

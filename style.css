@@ -48,6 +48,84 @@ body {
   background-size: cover;
 }
 
+
+/*------modal------*/
+
+#containerModal{
+   display: none;
+   width: 500px;
+   height: 500px;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+}
+
+
+#modal{
+  
+  width: 40%;
+  height: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 8%;
+  gap: 10px;
+}
+
+
+#textseconnecter{
+  width: 200px;
+  
+}
+#texth1{
+  width: 100%;
+  color: blue;
+}
+
+#textidentifiant{
+  width: 100%;
+  margin-top: 50px;
+}
+
+
+#inputUser{
+  background-color: bisque;
+  width: 50%;
+  height: 15%;
+  font-size: 16pt;
+  padding: 5px;
+}
+
+
+#textmdp{
+  width: 100%;  
+
+  margin-top: 20px;
+}
+
+
+#inputPassword{
+  background-color: bisque;
+  width: 50%;
+  height: 15%;
+  font-size: 16pt;
+  padding: 5px;
+}
+
+
+#connexion{
+  width: 25%;  
+  height: 10%;
+  font-size: large;
+  margin-top: 30px;
+  
+}
+
+
+/*------fin modal------*/
+
+
 .container {
   display: flex;
   flex-flow: column;
