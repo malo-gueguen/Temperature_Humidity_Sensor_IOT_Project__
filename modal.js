@@ -1,9 +1,56 @@
 
 
 
-let btnConnexion = document.getElementById("connexion")
+let btnConnexion = document.querySelector(".connexionButton")
+let btnSubscription = document.querySelector(".subscriptionButton")
 let containerStation = document.getElementById("containerStation")
 let containerModal = document.getElementById("containerModal")
+
+
+let sendButton = document.getElementById("loginButton")
+let inscription = document.getElementById("inscription")
+let state = 0;
+
+
+let SeConnecterh1 = document.getElementById("SeConnecterh1");
+let connexion = document.querySelector(".connexionButton");
+let connexionState = 0;
+
+
+// btnSubscription.addEventListener("click", async function fetchConnexion (){
+//     try {
+//         const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
+//         method: "GET",
+//         headers: { "Content-Type": "application/json" },
+//         });
+    
+//         const data = await response.json();
+//         inputUser = document.getElementById("inputUser").value;
+//         inputPassword = document.getElementById("inputPassword").value;
+    
+//         data.forEach((item) => {
+
+//         if( inputUser == item.user && inputPassword == item.password) {            
+            
+//             document.getElementById("inputUser").style.backgroundColor = "bisque"
+//             document.getElementById("inputPassword").style.backgroundColor = "bisque"
+//             document.getElementById("inputUser").value = ""
+//             document.getElementById("inputPassword").value = ""
+//             document.getElementById("nbDataSelector").classList.remove("hidden")
+//             closeModal(state, containerModal, containerStation)
+
+
+//         }else{
+//             console.log("test")
+//             document.getElementById("inputUser").value = ""
+//             document.getElementById("inputPassword").value = ""
+//         }
+//         });
+//     } catch (error) {
+//         console.error("Error in fetchConnexion: ", error);
+//     }
+// });
+
 btnConnexion.addEventListener("click", async function fetchConnexion (){
     try {
         const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
@@ -40,9 +87,7 @@ btnConnexion.addEventListener("click", async function fetchConnexion (){
 
 
 
-let sendButton = document.getElementById("loginButton")
-let inscription = document.getElementById("inscription")
-let state = 0;
+
 
 sendButton.addEventListener("click", () =>{
     console.log("modal")
@@ -69,6 +114,36 @@ function closeModal(state, containerModal, containerStation){
         containerStation.style.filter = "none" 
         return state
 }
+
+
+inscription.addEventListener("click", function(e){
+    if(connexionState == 0){
+        console.log("test")
+        SeConnecterh1.innerHTML = "S'inscrire";
+        connexion.innerHTML = "S'inscrire";
+        connexion.classList.remove('connexionButton');
+        connexion.classList.add("subscriptionButton");
+        inscription.innerHTML = "Se connecter";
+        connexionState =1;
+    } else {
+        SeConnecterh1.innerHTML = "Se connecter";
+        connexion.innerHTML = "Se connecter";
+        connexion.classList.add('connexionButton');
+        connexion.classList.remove("subscriptionButton");
+        inscription.innerHTML = "Pas de compte ? Inscrivez-vous ?";
+        connexionState =0;
+    }
+
+});
+
+
+// function changeForm(){
+//     const loginForm = document.getElementById("loginForm");
+//     let nbDataSelector = document.getElementById("nbDataSelector");
+//     loginForm.style.display = "none";
+//     logoutButton.style.display = "block";
+//     nbDataSelector.classList.remove("hidden");
+//   }
 
 
 // document.addEventListener("click", (event) => {
@@ -109,29 +184,3 @@ function closeModal(state, containerModal, containerStation){
 //     }
 // });
 
-let SeConnecterh1 = document.getElementById("SeConnecterh1");
-let connexion = document.getElementById(".connexionButton");
-
-
-inscription.addEventListener("click", function(e){
-    console.log("test")
-    SeConnecterh1.innerHTML = "S'inscrire";
-    connexion.innerHTML = "S'inscrire";
-    connexion.classList.remove('.connexionButton');
-    connexion.classList.add("subscriptionButton")
-    inscription.innerHTML = "Se connecter"
-
-    // if(inscription.innerHTML == "Se connecter"){
-    //     SeConnecterh1.innerHTML = "Se connecter";
-    //     connexion.innerHTML = "Se connecter";
-    // }
-});
-
-
-// function changeForm(){
-//     const loginForm = document.getElementById("loginForm");
-//     let nbDataSelector = document.getElementById("nbDataSelector");
-//     loginForm.style.display = "none";
-//     logoutButton.style.display = "block";
-//     nbDataSelector.classList.remove("hidden");
-//   }

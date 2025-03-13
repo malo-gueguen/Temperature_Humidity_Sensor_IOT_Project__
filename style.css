@@ -118,7 +118,7 @@ body {
 }
 
 
-.connexionButton {
+.buttonStyle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -139,19 +139,19 @@ body {
   transition: box-shadow 0.15s, transform 0.15s;
 }
 
-.connexionButton:hover {
+.buttonStyle:hover {
   box-shadow:
     rgba(45, 35, 66, 0.4) 0 4px 8px,
     rgba(45, 35, 66, 0.2) 0 7px 13px -3px;
   transform: translateY(-2px);
 }
 
-.connexionButton:active {
+.buttonStyle:active {
   box-shadow: rgba(0, 0, 0, 0.2) 0 3px 7px inset;
   transform: translateY(2px);
 }
 
-.connexionButton:focus {
+.buttonStyle:focus {
   outline: none;
 }
 
