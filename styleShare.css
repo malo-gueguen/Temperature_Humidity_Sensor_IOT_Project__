@@ -1,11 +1,11 @@
 .partage{
     display: flex;
-    margin-left: 25%;
+    justify-content: center;
 }
 #share{
     margin-bottom: 2rem;
     margin-top: 2rem;
-    width: 10%;
+    width: 4%;
     border-radius: 1rem;
     margin-left: 1rem;
   }
