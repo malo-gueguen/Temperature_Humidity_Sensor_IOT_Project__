@@ -77,14 +77,21 @@ sendButton.addEventListener("click", function(){
 // });
 
 let SeConnecterh1 = document.getElementById("SeConnecterh1");
-let connexion = document.getElementById("connexion");
+let connexion = document.getElementById(".connexionButton");
 
 
 inscription.addEventListener("click", function(e){
     console.log("test")
     SeConnecterh1.innerHTML = "S'inscrire";
     connexion.innerHTML = "S'inscrire";
+    connexion.classList.remove('.connexionButton');
+    connexion.classList.add("subscriptionButton")
     inscription.innerHTML = "Se connecter"
+
+    // if(inscription.innerHTML == "Se connecter"){
+    //     SeConnecterh1.innerHTML = "Se connecter";
+    //     connexion.innerHTML = "Se connecter";
+    // }
 });
 
 
