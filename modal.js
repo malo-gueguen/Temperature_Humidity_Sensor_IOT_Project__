@@ -38,22 +38,45 @@ btnConnexion.addEventListener("click", async function fetchConnexion (){
 
 
 
-let sendButton = document.getElementById("sendButton")
+let sendButton = document.getElementById("loginButton")
 let state = 0;
+
 sendButton.addEventListener("click", function(){
     console.log("modal")
+    let containerStation = document.getElementById("containerStation")
     let containerModal = document.getElementById("containerModal")
     if(state == 0){
-        state = 1;
+        state = 1
         console.log("modal open")
         containerModal.style.display = "flex"
+        containerStation.style.filter = "blur(0.6rem)"
     }else if (state == 1){
-        state = 0;
+        state = 0
         console.log("modal close")
         containerModal.style.display = "none"
+        containerStation.style.filter = "none"
+        
     }
 });
 
+
+document.addEventListener("click", function(e){
+    console.log("test")
+    if (document.getElementById(containerModal).contains(e.target)){
+        console.log("clic dans modal")
+    }else{
+        console.log("clic dehors modal")
+        if(state == 1){
+            state = 0
+            containerModal.style.display = "none"
+            containerStation.style.filter = "none"
+        }else if (state == 0){
+            state = 1
+            containerModal.style.display = "flex"
+            coinerStation.style.filter = "blur(0.6rem)"
+        }
+    }
+});
 
 
 // function changeForm(){

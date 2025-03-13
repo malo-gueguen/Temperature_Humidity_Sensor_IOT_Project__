@@ -8,22 +8,9 @@
   </head>
 
   <body class="body">
-    <header>
-      <div class="titre">
-        <h1>Informations Météo</h1>
-        <div id="time"></div>
-      </div>
-
-      <div class="login-container" id="login_box">
-        <form id="loginForm">
-          <button id="sendButton" type="button">Se connecter</button>
-        </form>
-        <button id="logoutButton">Se déconnecter</button>
-      </div>
-    </header>
     <div id="containerModal">
       <div id="modal">
-        <div id="textseconnecter"><h1 id="texth1">Se connecter</h1></div>
+        <div id="textseconnecter"><h1 id="SeConnecterh1">Se connecter</h1></div>
         <div id="textidentifiant"><h3>Identifiant *</h3></div>
         <input
           id="inputUser"
@@ -45,35 +32,49 @@
         <button id="connexion">Connexion</button>
       </div>
     </div>
-    <section class="container">
-      <section class="container-data">
-        <section class="cercle">
-          <p id="temp"></p>
-          <div id="message"></div>
-        </section>
+    <section id="containerStation">
+      <header>
+        <div class="titre">
+          <h1>Informations Météo</h1>
+          <div id="time"></div>
+        </div>
 
-        <div class="cercle" id="humContainer">
-          <div>
-            <p id="hum"></p>
-            <div id="message2"></div>
+        <div class="login-container" id="login_box">
+          <form id="loginForm">
+            <button id="loginButton" type="button">Se connecter</button>
+          </form>
+          <button id="logoutButton">Se déconnecter</button>
+        </div>
+      </header>
+      <section class="container">
+        <section class="container-data">
+          <section class="cercle">
+            <p id="temp"></p>
+            <div id="message"></div>
+          </section>
+
+          <div class="cercle" id="humContainer">
+            <div>
+              <p id="hum"></p>
+              <div id="message2"></div>
+            </div>
           </div>
-        </div>
-      </section>
-      <section class="chart">
-        <div class="dataChange-container hidden" id="nbDataSelector">
-          <p>Entrez le nombre de données à afficher</p>
-          <input
-            id="changeDataSelector"
-            type="text"
-            placeholder="Entrer pour valider"
-            min="1"
-            max="500"
-          />
-        </div>
-        <canvas id="myChart" width="800" height="400"></canvas>
+        </section>
+        <section class="chart">
+          <div class="dataChange-container hidden" id="nbDataSelector">
+            <p>Entrez le nombre de données à afficher</p>
+            <input
+              id="changeDataSelector"
+              type="text"
+              placeholder="Entrer pour valider"
+              min="1"
+              max="500"
+            />
+          </div>
+          <canvas id="myChart" width="800" height="400"></canvas>
+        </section>
       </section>
     </section>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     <script src="particles.js"></script>

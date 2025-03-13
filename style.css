@@ -52,40 +52,44 @@ body {
 /*------modal------*/
 
 #containerModal{
-   display: none;
-   width: 500px;
-   height: 500px;
+  display: flex;
+  width:100%;
+  height: 100%;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: absolute;
   z-index: 10;
+  margin-left: 420px;
+  margin-top: 90px;
+  background-color: rgb(113, 180, 243);
 }
 
 
 #modal{
-  
   width: 40%;
   height: 50%;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 8%;
   gap: 10px;
 }
 
 
-#textseconnecter{
+.textseconnecter{
   width: 200px;
   
 }
-#texth1{
+#SeConnecterh1{
   width: 100%;
-  color: blue;
+  color: rgb(255, 255, 255);
 }
 
 #textidentifiant{
   width: 100%;
-  margin-top: 50px;
+  
+  color: rgb(255, 255, 255);
 }
 
 
@@ -100,8 +104,8 @@ body {
 
 #textmdp{
   width: 100%;  
-
-  margin-top: 20px;
+  
+  color: rgb(255, 255, 255);
 }
 
 
@@ -118,7 +122,7 @@ body {
   width: 25%;  
   height: 10%;
   font-size: large;
-  margin-top: 30px;
+  
   
 }
 
@@ -199,8 +203,9 @@ input{
 }
 
 .login-container button {
-  width: 50%;
-  padding: 10px;
+  width: 125px;
+  height: 50px;
+  padding: 5px;
   margin-bottom: 10px;
   border: none;
   border-radius: 5px;
@@ -209,7 +214,6 @@ input{
   color: #fff;
   background: linear-gradient(to right, #3B9DD4, #2C8BB8);
 }
-
 
 .login-container button:hover {
   border: 1px solid white;
