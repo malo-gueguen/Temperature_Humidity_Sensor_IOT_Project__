@@ -11,6 +11,7 @@ let notifPopUp = true;
 
 let nbData=50;
 let labelsGraph = [];
+let sum=0;
 for (let i = 0; i < nbData; i++) {
   labelsGraph.push("-");
 }
@@ -24,11 +25,22 @@ async function fetchTemperature() {
     const data = await response.json();
     let htmlvar2 = "";
     valeurTemp = [];
+    let moyenneTemp = [];
+    let compteur = 0;
     data.forEach((item) => {
-      htmlvar2 += `${item.Temperature} °C `;
-      if (valeurTemp.length < nbData) {
-        valeurTemp.push(item.Temperature);
+      valeurTemp.push(item.Temperature);
+      // htmlvar2 += `${valeurTemp} °C `;
+      // if (valeurTemp.length < nbData) {
+      //     valeurTemp.push(item.Temperature);
+      // }
+      
+      compteur +=1;
+      if(compteur>4){
+        compteur =0;
+        let sum = 0;
+        valeurTemp
       }
+
     });
     console.log(`Température : ${valeurTemp}`);
     document.getElementById("temp").innerHTML = htmlvar2;
@@ -126,6 +138,7 @@ function updateHumidty() {
     container.classList.add("hot");
     message.innerHTML = "Sec 🌵";
   }
+
 }
 
 function mettreAJourHeure() {
