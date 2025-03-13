@@ -28,8 +28,7 @@ btnConnexion.addEventListener("click", async function fetchConnexion (){
 
 
         }else{
-            document.getElementById("inputUser").style.backgroundColor = "red"
-            document.getElementById("inputPassword").style.backgroundColor = "red"
+            console.log("test")
             document.getElementById("inputUser").value = ""
             document.getElementById("inputPassword").value = ""
         }
@@ -42,7 +41,8 @@ btnConnexion.addEventListener("click", async function fetchConnexion (){
 
 
 let sendButton = document.getElementById("loginButton")
-let state = 0
+let inscription = document.getElementById("inscription")
+let state = 0;
 
 sendButton.addEventListener("click", () =>{
     console.log("modal")
@@ -90,6 +90,35 @@ function closeModal(state, containerModal, containerStation){
 // });
 
 
+
+// document.addEventListener("click", function(e){
+//     console.log("test")
+//     if (document.getElementById(containerModal).contains(e.target)){
+//         console.log("clic dans modal")
+//     }else{
+//         console.log("clic dehors modal")
+//         if(state == 1){
+//             state = 0
+//             containerModal.style.display = "none"
+//             containerStation.style.filter = "none"
+//         }else if (state == 0){
+//             state = 1
+//             containerModal.style.display = "flex"
+//             coinerStation.style.filter = "blur(0.6rem)"
+//         }
+//     }
+// });
+
+let SeConnecterh1 = document.getElementById("SeConnecterh1");
+let connexion = document.getElementById("connexion");
+
+
+inscription.addEventListener("click", function(e){
+    console.log("test")
+    SeConnecterh1.innerHTML = "S'inscrire";
+    connexion.innerHTML = "S'inscrire";
+    inscription.innerHTML = "Se connecter"
+});
 
 
 // function changeForm(){
