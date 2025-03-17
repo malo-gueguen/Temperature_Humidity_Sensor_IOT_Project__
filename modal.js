@@ -1,7 +1,7 @@
 
 
 
-let btnConnexion = document.querySelector(".connexionButton")
+let btnConnexion = document.getElementById("btn_conn")
 let btnSubscription = document.querySelector(".subscriptionButton")
 let containerStation = document.getElementById("containerStation")
 let containerModal = document.getElementById("containerModal")
@@ -51,6 +51,8 @@ let connexionState = 0;
 //     }
 // });
 
+
+//Vérification du compte existant lors de la connexion
 btnConnexion.addEventListener("click", async function fetchConnexion (){
     try {
         const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
@@ -88,7 +90,7 @@ btnConnexion.addEventListener("click", async function fetchConnexion (){
 
 
 
-
+// ouvrir et fermer le modal
 sendButton.addEventListener("click", () =>{
     console.log("modal")
     if(state == 0){
@@ -116,25 +118,71 @@ function closeModal(state, containerModal, containerStation){
 }
 
 
+
+// switch se connecter / s'inscrire
 inscription.addEventListener("click", function(e){
     if(connexionState == 0){
-        console.log("test")
+        console.log(connexionState);
         SeConnecterh1.innerHTML = "S'inscrire";
         connexion.innerHTML = "S'inscrire";
         connexion.classList.remove('connexionButton');
         connexion.classList.add("subscriptionButton");
         inscription.innerHTML = "Se connecter";
-        connexionState =1;
-    } else {
+        connexionState = 1;
+    } else if(connexionState == 1) {
+        console.log(connexionState);
         SeConnecterh1.innerHTML = "Se connecter";
         connexion.innerHTML = "Se connecter";
         connexion.classList.add('connexionButton');
         connexion.classList.remove("subscriptionButton");
         inscription.innerHTML = "Pas de compte ? Inscrivez-vous ?";
-        connexionState =0;
+        connexionState = 0;
     }
-
 });
+
+//Inscription method POST
+
+
+    let subscriptionButton = document.getElementById("btn_conn");
+
+    subscriptionButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          console.log("testclicksubscription")
+      
+        if(subscriptionButton.classList.contains("connexionButton")){
+            console.log("inscription returned")
+            return
+        }
+        console.log("inscription en cours")
+        
+        let inputPassword = document.getElementById("inputPassword").value;
+        let inputUser = document.getElementById("inputUser").value;
+        let data = {
+            user: inputUser, 
+            password: inputPassword
+        };
+        console.log(inputPassword)
+        console.log(inputUser)
+        console.log(JSON.stringify(data))
+
+        fetch("./AddUser.php",
+        {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+        }
+        )
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP: ${response.status}`);
+            }
+            return response.text(); 
+        })
+        .then(data => console.log("Réponse du serveur :", data))
+        .catch(error => console.error("Erreur dans fetch :", error));
+    });
+
+
 
 
 // function changeForm(){

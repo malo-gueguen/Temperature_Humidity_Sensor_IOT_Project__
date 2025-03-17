@@ -10,27 +10,32 @@
   <body class="body">
     <div id="containerModal">
       <div id="modal">
-        <h1 id="SeConnecterh1">Se connecter</h1>
-        <h3 id="textidentifiant">Identifiant *</h3>
-        <input
-          id="inputUser"
-          type="text"
-          placeholder="Identifiant"
-          onblur="this.placeholder='Identifiant'"
-          onfocus="this.placeholder=''"
-          required
-        />
-        <div id="textmdp"><h3>Mot de passe *</h3></div>
-        <input
-          id="inputPassword"
-          type="password"
-          placeholder="Mot de passe"
-          onblur="this.placeholder='Mot de passe'"
-          onfocus="this.placeholder=''"
-          required
-        />
-        <button class="buttonStyle connexionButton">Connexion</button>
-        <h3 id="inscription">Pas de compte ? Inscrivez-vous ?</h3>
+        <form>
+          <h1 id="SeConnecterh1">Se connecter</h1>
+          <h3 id="textidentifiant">Identifiant *</h3>
+          <input
+            id="inputUser"
+            type="text"
+            placeholder="Identifiant"
+            onblur="this.placeholder='Identifiant'"
+            onfocus="this.placeholder=''"
+            required
+          />
+          <div id="textmdp"><h3>Mot de passe *</h3></div>
+          <input
+            id="inputPassword"
+            type="password"
+            placeholder="Mot de passe"
+            onblur="this.placeholder='Mot de passe'"
+            onfocus="this.placeholder=''"
+            required
+          />
+          <button class="buttonStyle connexionButton" id="btn_conn">
+            Connexion
+          </button>
+
+          <h3 id="inscription">Pas de compte ? Inscrivez-vous ?</h3>
+        </form>
       </div>
     </div>
     <section id="containerStation">
