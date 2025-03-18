@@ -34,7 +34,7 @@
         try{
             $request = $pdo->prepare("INSERT INTO Users (user, password) VALUES (:user, :password)");
             $request->bindParam(':user', $user,PDO::PARAM_STR);       
-            $request->bindParam(':password', $user, PDO::PARAM_STR);  
+            $request->bindParam(':password', $password, PDO::PARAM_STR);  
             $request->execute();      
         } catch (Exception $e) {
             http_response_code(500);
