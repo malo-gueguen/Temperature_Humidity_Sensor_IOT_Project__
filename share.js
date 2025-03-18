@@ -42,3 +42,30 @@ function ClicX() {
 
     window.open(twitterShareUrl, '_blank', 'width=600,height=400');
 }
+function exportToCSV() {
+    if (!valeurTime || !valeurTemp || !valeurHum) {
+      console.error("Données non disponibles !");
+      return;
+    }
+  
+    let csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "Heure;Temperature;Humidite\n"; // En-tête du fichier CSV
+  
+    // Remplir les données (assure-toi que les tableaux ont la même longueur)
+    for (let i = 0; i < valeurTime.length; i++) {
+      let time = valeurTime[i] || "-";
+      let temp = valeurTemp[i] || "-";
+      let hum = valeurHum[i] || "-";
+      csvContent += `${time};${temp};${hum}\n`;
+    }
+  
+    // Création du fichier et téléchargement
+    let encodedUri = encodeURI(csvContent);
+    let link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "donnees_meteo.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+  
