@@ -74,6 +74,7 @@ btnConnexion.addEventListener("click", async function fetchConnexion (){
             document.getElementById("inputPassword").value = ""
             document.getElementById("nbDataSelector").classList.remove("hidden")
             closeModal(state, containerModal, containerStation)
+            
 
 
         }else{

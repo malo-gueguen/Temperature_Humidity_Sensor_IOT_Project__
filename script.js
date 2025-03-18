@@ -49,6 +49,7 @@ async function fetchTime() {
     data.forEach((item) => {
       if (valeurTime.length < nbData) {
         valeurTime.push(item.Time);
+        console.log(valeurTime);
       }
     });
   } catch (error) {
@@ -66,7 +67,7 @@ async function fetchHumidite() {
     let htmlvar = "";
     valeurHum = [];
     data.forEach((item) => {
-      htmlvar += `${item.Humidite} °C `;
+      htmlvar += `${item.Humidite}`;
       if (valeurHum.length < nbData) {
         valeurHum.push(item.Humidite);
       }
@@ -149,7 +150,6 @@ function createGraph() {
   console.log("Création du graphique");
   chart = new Chart(ctx, {
     type: "line",
-    
     data: {
       labels: valeurTime,
       datasets: [
