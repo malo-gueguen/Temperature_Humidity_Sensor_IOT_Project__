@@ -175,6 +175,12 @@ input{
   margin-right: 20px;
 }
 
+.modalForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
 
 /*------END MODAL------*/
 /*------CONTAINER------*/
@@ -243,6 +249,9 @@ header {
   visibility: hidden;
 }
 
+/*------RESPONSIVE------*/
+
+
 
 @media (max-width: 1100px) {
   header {
@@ -253,13 +262,13 @@ header {
   }
   
   .login-container {
-    /* Passage en position relative pour intégrer l'élément dans le flux normal */
     position: relative;
-    margin-top: 20px;     /* Espacement entre le titre et le formulaire */
-    right: auto;         /* Réinitialise la position */
+    margin-top: 2rem;     
+    right: auto;         
     top: auto;
-    align-self: center;   /* Centre horizontalement l'élément */
+    align-self: center;
   }
+
   .container-data {
     display: flex;
     flex-flow: column;
