@@ -9,7 +9,7 @@ let chart;
 let notifPopUp = true;
 
 
-let nbData;
+let nbData = 50;
 let labelsGraph = [];
 let sum=0;
 for (let i = 0; i < nbData; i++) {
@@ -40,17 +40,17 @@ async function fetchTemperature() {
     let compteur = 0;
     data.forEach((item) => {
       valeurTemp.push(item.Temperature);
-      // htmlvar2 += `${valeurTemp} °C `;
-      // if (valeurTemp.length < nbData) {
-      //     valeurTemp.push(item.Temperature);
-      // }
-      
-      compteur +=1;
-      if(compteur>4){
-        compteur =0;
-        let sum = 0;
-        valeurTemp
+      htmlvar2 += `${valeurTemp} °C `;
+      if (valeurTemp.length < nbData) {
+          valeurTemp.push(item.Temperature);
       }
+      
+      // compteur +=1;
+      // if(compteur>4){
+      //   compteur =0;
+      //   let sum = 0;
+      //   valeurTemp
+      // }
 
     });
     console.log(`Température : ${valeurTemp}`);
@@ -196,7 +196,6 @@ function mettreAJourHeure() {
 //    \_____|_|  \___|\__,_|\__\___|  \__, |_|  \__,_| .__/|_| |_|
 //                                     __/ |         | |          
 //                                    |___/          |_|          
-
 
 function createGraph() {
   console.log("Création du graphique");
