@@ -11,10 +11,6 @@ let inscription = document.getElementById("inscription")
 let statemodal = 0;
 let openTime = new Date().valueOf()
 
-console.log("initialisation de la valeur")
-console.log(statemodal)
-
-
 let SeConnecterh1 = document.getElementById("SeConnecterh1");
 let connexion = document.querySelector(".connexionButton");
 let connexionState = 0;
@@ -41,10 +37,9 @@ btnConnexion.addEventListener("click", async function fetchConnexion (){
             document.getElementById("inputUser").value = ""
             document.getElementById("inputPassword").value = ""
             document.getElementById("nbDataSelector").classList.remove("hidden")
-            closeModal(state, containerModal, containerStation)
+            closeModal()
 
         }else{
-            console.log("test")
             document.getElementById("inputUser").value = ""
             document.getElementById("inputPassword").value = ""
         }
@@ -59,9 +54,7 @@ btnConnexion.addEventListener("click", async function fetchConnexion (){
 
 // ouvrir et fermer le modal
 sendButton.addEventListener("click", () =>{
-    console.log("modal")
     if(statemodal === 0){
-        console.log("au moment du clic le state est à 0")
         openTime = new Date().valueOf()
         openModal()
     }
@@ -71,45 +64,24 @@ document.addEventListener("click", (evt)=>{
     if (openTime > new Date().valueOf() - 100) {
         return;
     }
-    console.log(openTime)
-    console.log("click")
-    console.log("document.addeventlistener")
-    console.log(statemodal)
     let modal = document.getElementById("modal")
-    if(!(modal.contains(evt.target)) && statemodal === 1){
-        console.log("!modal.contains(evt.target)")
+    if(!(modal.contains(evt.target)) && statemodal === 1){ 
         closeModal()
-        console.log("modal fermé")
     }
-    // if(containerStation.contains(evt.target)){
-    //     console.log("containerStation.contains(evt.target)")
-    // }
-    // if(state === 1 && !modal.contains(evt.target)){
-    //     closeModal(state, containerModal, containerStation)
-    // }
 })
 
 
 function openModal(){
-        console.log("start - openModal");
         statemodal = 1
-        console.log("openModal - statemodal =")
-        console.log(statemodal)
         containerModal.style.display = "flex"
         containerStation.style.filter = "blur(0.6rem)"
-        console.log("End - openModal");
         
 }
 
 function closeModal(){
-        console.log("start - closeModal");
         statemodal = 0
-        console.log("closeModal - statemodal =")
-        console.log(statemodal)
         containerModal.style.display = "none"
-        containerStation.style.filter = "none"       
-        console.log("End - closeModal");
-        
+        containerStation.style.filter = "none"        
 }
 
 
@@ -117,7 +89,6 @@ function closeModal(){
 // switch se connecter / s'inscrire
 inscription.addEventListener("click", function(e){
     if(connexionState == 0){
-        console.log(connexionState);
         SeConnecterh1.innerHTML = "S'inscrire";
         connexion.innerHTML = "S'inscrire";
         connexion.classList.remove('connexionButton');
@@ -125,7 +96,6 @@ inscription.addEventListener("click", function(e){
         inscription.innerHTML = "Se connecter";
         connexionState = 1;
     } else if(connexionState == 1) {
-        console.log(connexionState);
         SeConnecterh1.innerHTML = "Se connecter";
         connexion.innerHTML = "Se connecter";
         connexion.classList.add('connexionButton');
@@ -142,7 +112,6 @@ inscription.addEventListener("click", function(e){
 
     subscriptionButton.addEventListener("click", (event) => {
           event.preventDefault();
-          console.log("testclicksubscription")
       
         if(subscriptionButton.classList.contains("connexionButton")){
             console.log("inscription returned")
@@ -156,10 +125,6 @@ inscription.addEventListener("click", function(e){
             user: inputUser, 
             password: inputPassword
         };
-        console.log(inputPassword)
-        console.log(inputUser)
-        console.log(JSON.stringify(data))
-
         fetch("./AddUser.php",
         {
         method: "POST",
