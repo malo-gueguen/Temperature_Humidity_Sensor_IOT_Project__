@@ -1,0 +1,35 @@
+.partage{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    
+}
+#mail{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    width: 4%;
+    border-radius: 1rem;
+    margin-left: 1rem;
+  } 
+
+  #facebook{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    width: 4%;
+    border-radius: 1rem;
+    margin-left: 1rem;
+  } 
+  #X{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    width: 4%;
+    border-radius: 1rem;
+    margin-left: 1rem;
+  } 
+  #telecharger{
+    margin-bottom: 2rem;
+    width: 4%;
+    border-radius: 1rem;
+    margin-left: 1rem;
+  }

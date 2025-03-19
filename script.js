@@ -11,6 +11,7 @@ let notifPopUp = true;
 
 let nbData;
 let labelsGraph = [];
+let sum=0;
 for (let i = 0; i < nbData; i++) {
   labelsGraph.push("-");
 }
@@ -35,11 +36,22 @@ async function fetchTemperature() {
     const data = await response.json();
     let htmlvar2 = "";
     valeurTemp = [];
+    let moyenneTemp = [];
+    let compteur = 0;
     data.forEach((item) => {
-      htmlvar2 += `${item.Temperature} °C `;
-      if (valeurTemp.length < nbData) {
-        valeurTemp.push(item.Temperature);
+      valeurTemp.push(item.Temperature);
+      // htmlvar2 += `${valeurTemp} °C `;
+      // if (valeurTemp.length < nbData) {
+      //     valeurTemp.push(item.Temperature);
+      // }
+      
+      compteur +=1;
+      if(compteur>4){
+        compteur =0;
+        let sum = 0;
+        valeurTemp
       }
+
     });
     console.log(`Température : ${valeurTemp}`);
     document.getElementById("temp").innerHTML = htmlvar2;
@@ -145,6 +157,7 @@ function updateHumidty() {
     container.classList.add("hot");
     message.innerHTML = "Sec 🌵";
   }
+
 }
 
 
@@ -272,6 +285,17 @@ setInterval(async () => {
 let permissionGranted = false;
 
 function createNotification() {
+Notification.requestPermission().then((permission) => {
+  if (permission === "granted") {
+    console.log("Permission notifications accordée");
+    permissionGranted = true;
+  } else {
+    console.log("Permission refusée ou ignorée");
+  }
+});
+
+function createNotification() {
+  const img = "/benjouk.jpg";
   const text = "Il fait chaud";
   const notification = new Notification("Le temps est : ",{
     body: text,
@@ -387,3 +411,4 @@ async function displayWindowSize(){
 }
 window.addEventListener("resize", displayWindowSize);
 displayWindowSize();
+};

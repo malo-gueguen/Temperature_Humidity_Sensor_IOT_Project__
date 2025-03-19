@@ -96,6 +96,7 @@ inscription.addEventListener("click", function(e){
         inscription.innerHTML = "Se connecter";
         connexionState = 1;
     } else if(connexionState == 1) {
+        console.log(connexionState);
         SeConnecterh1.innerHTML = "Se connecter";
         connexion.innerHTML = "Se connecter";
         connexion.classList.add('connexionButton');
@@ -112,6 +113,7 @@ inscription.addEventListener("click", function(e){
 
     subscriptionButton.addEventListener("click", (event) => {
           event.preventDefault();
+          console.log("testclicksubscription")
       
         if(subscriptionButton.classList.contains("connexionButton")){
             console.log("inscription returned")
@@ -125,6 +127,10 @@ inscription.addEventListener("click", function(e){
             user: inputUser, 
             password: inputPassword
         };
+        console.log(inputPassword)
+        console.log(inputUser)
+        console.log(JSON.stringify(data))
+
         fetch("./AddUser.php",
         {
         method: "POST",
@@ -141,8 +147,6 @@ inscription.addEventListener("click", function(e){
         .then(data => console.log("Réponse du serveur :", data))
         .catch(error => console.error("Erreur dans fetch :", error));
     });
-
-
 
 
 

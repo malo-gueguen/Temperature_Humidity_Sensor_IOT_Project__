@@ -84,6 +84,15 @@ body {
   text-align: center;
   margin: 0.5rem 0;
   font-weight: 600; 
+  overflow: hidden;
+  /* background-image: url("https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNThzd3pva29oMDB1aWRyaXA5c3R5ZTY3bTEzMngyN3Z3djJweXhsOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/jqZmrCrRFTjwQPaj5b/giphy.gif");
+  background-repeat: no-repeat;      
+  background-position: center center; 
+  background-size: cover;    */
+}
+
+.hot{
+  background: linear-gradient(to bottom, rgba(255, 165, 0, 0.9), rgba(255, 215, 0, 0.9));
 }
 
 
@@ -168,7 +177,6 @@ input{
   border: 1px solid white;
 }
 
-
 #logoutButton{
   display: none;
   width: 100%;
@@ -252,6 +260,12 @@ header {
 /*------RESPONSIVE------*/
 
 
+.chart-wrapper {
+  max-width: 1000px;  
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  padding: 2rem;    
+}
 
 @media (max-width: 1100px) {
   header {
@@ -282,3 +296,52 @@ header {
     font-size: 2rem;
   }
 }
+.flash-circle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: yellow;
+  border-radius: 50%;
+  cursor: pointer;
+  animation: fall 3s linear;
+}
+
+@keyframes fall {
+  from { transform: translateY(-100px); opacity: 1; }
+  to { transform: translateY(100vh); opacity: 0; }
+}
+
+.flashbang {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  opacity: 1;
+  z-index: 12499;
+  animation: flash-fade 5s linear forwards;
+}
+
+@keyframes flash-fade {
+  0% {opacity: 1;}
+  20% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.flash-image {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  opacity: 0;
+  z-index: 12500;
+  animation: fade-in 3s ease-in-out forwards;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
