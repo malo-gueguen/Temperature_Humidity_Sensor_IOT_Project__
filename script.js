@@ -3,9 +3,7 @@ let valeurHum;
 let valeurTime;
 let ctx = document.getElementById("myChart").getContext("2d");
 let chart;
-// let inputUser = document.getElementById("inputUser").textContent;
-// let inputPassword = document.getElementById("inputPassword").textContent;
-//let sendButton = document.getElementById("sendButton")
+
 let notifPopUp = true;
 
 
