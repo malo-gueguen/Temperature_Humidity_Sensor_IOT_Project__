@@ -9,11 +9,22 @@ let chart;
 let notifPopUp = true;
 
 
-let nbData=50;
+let nbData;
 let labelsGraph = [];
 for (let i = 0; i < nbData; i++) {
   labelsGraph.push("-");
 }
+
+
+//    ______   _       _     
+//   |  ____| | |     | |    
+//   | |__ ___| |_ ___| |__  
+//   |  __/ _ \ __/ __| '_ \ 
+//   | | |  __/ || (__| | | |
+//   |_|  \___|\__\___|_| |_|
+//                           
+//                           
+
 
 async function fetchTemperature() {
   try {
@@ -49,7 +60,6 @@ async function fetchTime() {
     data.forEach((item) => {
       if (valeurTime.length < nbData) {
         valeurTime.push(item.Time);
-        
       }
     });
   } catch (error) {
@@ -84,6 +94,14 @@ async function fetchHumidite() {
   }
 }
 
+//    _    _           _       _       
+//   | |  | |         | |     | |      
+//   | |  | |_ __   __| | __ _| |_ ___ 
+//   | |  | | '_ \ / _` |/ _` | __/ _ \
+//   | |__| | |_) | (_| | (_| | ||  __/
+//    \____/| .__/ \__,_|\__,_|\__\___|
+//          | |                        
+//          |_|                        
 
 function updateTemperature() {
   let tempDiv = document.getElementById("temp");
@@ -129,6 +147,16 @@ function updateHumidty() {
   }
 }
 
+
+//    _    _                  
+//   | |  | |                 
+//   | |__| | ___  _   _ _ __ 
+//   |  __  |/ _ \| | | | '__|
+//   | |  | | (_) | |_| | |   
+//   |_|  |_|\___/ \__,_|_|   
+//                            
+//                            
+
 function mettreAJourHeure() {
   const maintenant = new Date();
   const optionsDate = {
@@ -145,6 +173,17 @@ function mettreAJourHeure() {
   document.getElementById("time").textContent =
     dateFormatee + " — " + heureFormatee;
 }
+
+
+//     _____                _                               _     
+//    / ____|              | |                             | |    
+//   | |     _ __ ___  __ _| |_ ___    __ _ _ __ __ _ _ __ | |__  
+//   | |    | '__/ _ \/ _` | __/ _ \  / _` | '__/ _` | '_ \| '_ \ 
+//   | |____| | |  __/ (_| | ||  __/ | (_| | | | (_| | |_) | | | |
+//    \_____|_|  \___|\__,_|\__\___|  \__, |_|  \__,_| .__/|_| |_|
+//                                     __/ |         | |          
+//                                    |___/          |_|          
+
 
 function createGraph() {
   console.log("Création du graphique");
@@ -190,6 +229,15 @@ function createGraph() {
   console.log("Graphique créé");
 }
 
+//    __  __       _       
+//   |  \/  |     (_)      
+//   | \  / | __ _ _ _ __  
+//   | |\/| |/ _` | | '_ \ 
+//   | |  | | (_| | | | | |
+//   |_|  |_|\__,_|_|_| |_|
+//                         
+//                         
+
 async function main() {
   await fetchTemperature();
   await fetchHumidite();
@@ -212,25 +260,18 @@ setInterval(async () => {
 }, 10000);
 
 
-const loginForm = document.getElementById("loginForm");
-const logoutButton = document.getElementById("logoutButton");
+//    _   _       _   _  __ _           _   _             
+//   | \ | |     | | (_)/ _(_)         | | (_)            
+//   |  \| | ___ | |_ _| |_ _  ___ __ _| |_ _  ___  _ __  
+//   | . ` |/ _ \| __| |  _| |/ __/ _` | __| |/ _ \| '_ \ 
+//   | |\  | (_) | |_| | | | | (_| (_| | |_| | (_) | | | |
+//   |_| \_|\___/ \__|_|_| |_|\___\__,_|\__|_|\___/|_| |_|
+//                                                        
+//                                                        
 
-
-
-// Au chargement, demander la permission et stocker le résultat
 let permissionGranted = false;
 
-Notification.requestPermission().then((permission) => {
-  if (permission === "granted") {
-    console.log("Permission notifications accordée");
-    permissionGranted = true;
-  } else {
-    console.log("Permission refusée ou ignorée");
-  }
-});
-
 function createNotification() {
-  const img = "/benjouk.jpg";
   const text = "Il fait chaud";
   const notification = new Notification("Le temps est : ",{
     body: text,
@@ -254,13 +295,21 @@ function notification(){
     createNotification();
 }
 }
-// sendButton.addEventListener("click", function() {
-//   fetchConnexion();
-//   });
+
+//    _                 _       
+//   | |               (_)      
+//   | |     ___   __ _ _ _ __  
+//   | |    / _ \ / _` | | '_ \ 
+//   | |___| (_) | (_| | | | | |
+//   |______\___/ \__, |_|_| |_|
+//                 __/ |        
+//                |___/                                         
+
+const loginForm = document.getElementById("loginForm");
+const logoutButton = document.getElementById("logoutButton");
 
 
 logoutButton.addEventListener("click", async function() {
-
   logoutButton.style.display = "none";
   loginForm.style.display = "block";
   nbDataSelector.classList.add("hidden");
@@ -272,6 +321,15 @@ logoutButton.addEventListener("click", async function() {
     createGraph();
 });
 
+//     _____ _                              _ _      _ _   _  __                                   _   
+//    / ____| |                            ( | )    ( | ) (_)/ _|                                 | |  
+//   | |    | |__   __ _ _ __   __ _  ___   V V__  __V V   _| |_    ___ ___  _ __  _ __   ___  ___| |_ 
+//   | |    | '_ \ / _` | '_ \ / _` |/ _ \     \ \/ /     | |  _|  / __/ _ \| '_ \| '_ \ / _ \/ __| __|
+//   | |____| | | | (_| | | | | (_| |  __/      >  <      | | |   | (_| (_) | | | | | | |  __/ (__| |_ 
+//    \_____|_| |_|\__,_|_| |_|\__, |\___|     /_/\_\     |_|_|    \___\___/|_| |_|_| |_|\___|\___|\__|
+//                              __/ |                                                                  
+//     
+//Permet de changer le nombre du x si on est connecté
 
 let changeDataSelector = document.getElementById("changeDataSelector");
 
@@ -288,4 +346,44 @@ changeDataSelector.addEventListener("keypress", async function (e) {
 });
 
 
+//    _____           _                _                _    
+//   |  __ \         (_)              | |              | |   
+//   | |__) |___  ___ _ _______    ___| |__   __ _ _ __| |_  
+//   |  _  // _ \/ __| |_  / _ \  / __| '_ \ / _` | '__| __| 
+//   | | \ \  __/\__ \ |/ /  __/ | (__| | | | (_| | |  | |_  
+//   |_|  \_\___||___/_/___\___|  \___|_| |_|\__,_|_|   \__| 
+//                                                           
+//                                                           
+// Change la taille du graph en fonction de la taille de l'écran
 
+
+let stateWindowSize = 0;
+async function displayWindowSize(){
+  let w = document.documentElement.clientWidth;
+  let h = document.documentElement.clientHeight;
+  let oldstate= stateWindowSize;
+  if(w<700){
+    nbData=5;
+    console.log(nbData)
+    stateWindowSize =1;
+  } else {
+    nbData=50;
+    console.log(nbData)
+    stateWindowSize = 0;
+  }
+  if (oldstate == stateWindowSize){
+    return;
+  } else {
+    await fetchTemperature();
+    await fetchHumidite();
+    await fetchTime();
+  
+    if (chart) {
+      chart.destroy();
+    }
+    createGraph();
+  }
+
+}
+window.addEventListener("resize", displayWindowSize);
+displayWindowSize();

@@ -277,6 +277,8 @@ header {
   }
 }
 
-@media (max-width: 800px) {
-
+@media (max-width: 450px) {
+  .titre{
+    font-size: 2rem;
+  }
 }
