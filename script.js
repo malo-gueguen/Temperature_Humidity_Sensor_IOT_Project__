@@ -49,7 +49,7 @@ async function fetchTime() {
     data.forEach((item) => {
       if (valeurTime.length < nbData) {
         valeurTime.push(item.Time);
-        console.log(valeurTime);
+        
       }
     });
   } catch (error) {
