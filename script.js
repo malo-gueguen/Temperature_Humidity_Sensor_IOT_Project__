@@ -7,7 +7,7 @@ let chart;
 let notifPopUp = true;
 
 
-let nbData;
+let nbData = 50;
 let labelsGraph = [];
 let sum=0;
 for (let i = 0; i < nbData; i++) {
@@ -194,7 +194,6 @@ function mettreAJourHeure() {
 //    \_____|_|  \___|\__,_|\__\___|  \__, |_|  \__,_| .__/|_| |_|
 //                                     __/ |         | |          
 //                                    |___/          |_|          
-
 
 function createGraph() {
   console.log("Création du graphique");
