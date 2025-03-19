@@ -1,6 +1,4 @@
 
-
-
 let btnConnexion = document.getElementById("btn_conn")
 let btnSubscription = document.querySelector(".subscriptionButton")
 let containerStation = document.getElementById("containerStation")
@@ -74,8 +72,6 @@ btnConnexion.addEventListener("click", async function fetchConnexion (){
             document.getElementById("inputPassword").value = ""
             document.getElementById("nbDataSelector").classList.remove("hidden")
             closeModal(state, containerModal, containerStation)
-            
-
 
         }else{
             console.log("test")
