@@ -2,100 +2,84 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="styleShare.css">
-    <title>IoT_Project</title>
-  </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styleShare.css">
+  <title>IoT_Project</title>
+</head>
 
-  <body class="body">
-    <div id="containerModal">
-      <div id="modal">
-        <form class="modalForm">
-          <h1 id="SeConnecterh1">Se connecter</h1>
-          <h3 id="textidentifiant">Identifiant *</h3>
-          <input
-            id="inputUser"
-            type="text"
-            placeholder="Identifiant"
-            onblur="this.placeholder='Identifiant'"
-            onfocus="this.placeholder=''"
-            required
-          />
-          <h3 id="textmdp">Mot de passe *</h3>
-          <input
-            id="inputPassword"
-            type="password"
-            placeholder="Mot de passe"
-            onblur="this.placeholder='Mot de passe'"
-            onfocus="this.placeholder=''"
-            required
-          />
-          <button class="buttonStyle connexionButton" id="btn_conn">
-            Connexion
-          </button>
+<body class="body">
+  <div id="containerModal">
+    <div id="modal">
+      <form class="modalForm">
+        <h1 id="SeConnecterh1">Se connecter</h1>
+        <h3 id="textidentifiant">Identifiant *</h3>
+        <input id="inputUser" type="text" placeholder="Identifiant" onblur="this.placeholder='Identifiant'"
+          onfocus="this.placeholder=''" required />
+        <h3 id="textmdp">Mot de passe *</h3>
+        <input id="inputPassword" type="password" placeholder="Mot de passe" onblur="this.placeholder='Mot de passe'"
+          onfocus="this.placeholder=''" required />
+        <button class="buttonStyle connexionButton" id="btn_conn">
+          Connexion
+        </button>
 
-          <h3 id="inscription">Pas de compte ? Inscrivez-vous ?</h3>
-        </form>
-      </div>
+        <h3 id="inscription">Pas de compte ? Inscrivez-vous ?</h3>
+      </form>
     </div>
-    <section id="containerStation">
-      <header>
-        <div class="titre">
-          <h1>Informations Météo</h1>
-          <div id="time"></div>
-        </div>
-        <div class="login-container" id="login_box">
-            <form id="loginForm">
-                <button id="loginButton" type="button">Se connecter</button>
-              </form>
-              <button id="logoutButton">Se déconnecter</button>
-          </div>
+  </div>
+  <section id="containerStation">
+    <header>
+      <div class="titre">
+        <h1>Informations Météo</h1>
+        <div id="time"></div>
+      </div>
+      <div class="login-container" id="login_box">
+        <form id="loginForm">
+          <button id="loginButton" type="button">Se connecter</button>
+        </form>
+        <button id="logoutButton">Se déconnecter</button>
+      </div>
     </header>
     <section class="container">
-        <section class="container-data">
-            <div class="cercle">
-                <p id="temp"> </p>
-                <div id="message"></div>
-            </div>
-            <div class="cercle" id="humContainer">
-                    <p id="hum"></p>
-                    <div id="message2"></div>
-            </div>
-        </section>
+      <section class="container-data">
+        <div class="cercle">
+          <p id="temp"> </p>
+          <div id="message"></div>
+        </div>
+        <div class="cercle" id="humContainer">
+          <p id="hum"></p>
+          <div id="message2"></div>
+        </div>
       </section>
-      <section class="chart">
-        <div class="dataChange-container hidden" id="nbDataSelector">
-          <p>Entrez le nombre de données à afficher</p>
-          <input
-            id="changeDataSelector"
-            type="text"
-            placeholder="Entrer pour valider"
-            min="1"
-            max="500"
-          />
-        </div>
-        <div class="chart-wrapper">        
-          <canvas id="myChart"></canvas>
-        </div>
+    </section>
+    <section class="chart">
+      <div class="dataChange-container hidden" id="nbDataSelector">
+        <p>Entrez le nombre de données à afficher</p>
+        <input id="changeDataSelector" type="text" placeholder="Entrer pour valider" min="1" max="500" />
+      </div>
+      <div class="chart-wrapper">
+        <canvas id="myChart"></canvas>
+      </div>
     </section>
     <section class="partage">
-        <img src="images/mail.png" onclick="ClicMail()" id="mail"></img>
-        <img src="images/facebook.jpg" onclick="ClicFacebook()" id="facebook" ></img>
-        <img src="images/X.png" onclick="ClicX()" id="X" ></img>
-    </section>
-    <img src="images/télécharger.png" onclick="exportToCSV()" id="telecharger">
-      </section>
+      <img src="images/mail.png" onclick="ClicMail()" id="mail"></img>
+      <img src="images/facebook.jpg" onclick="ClicFacebook()" id="facebook"></img>
+      <img src="images/X.png" onclick="ClicX()" id="X"></img>
+      <img src="images/télécharger.png" onclick="exportToCSV()" id="telecharger">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script.js"></script>
-    <script src="particles.js"></script>
-    <script src="keyboardEffect.js"></script>
-    <script src="modal.js"></script>
-    <script src="soundPlay.js"></script>
-    <script src="flashbang.js"></script>
-    <script src="share.js"></script>
+    </section>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+  <script src="particles.js"></script>
+  <script src="keyboardEffect.js"></script>
+  <script src="modal.js"></script>
+  <!-- <script src="customCursorIcon.js"></script>
+    <script src="soundPlay.js"></script> -->
+  <script src="flashbang.js"></script>
+  <script src="share.js"></script>
 </body>
 
 </html>

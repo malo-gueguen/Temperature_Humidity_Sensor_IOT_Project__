@@ -292,9 +292,14 @@ header {
 
 @media (max-width: 450px) {
   .titre{
-    font-size: 2rem;
+    font-size: 1rem;
   }
 }
+
+
+
+
+
 .flash-circle {
   position: absolute;
   width: 50px;
@@ -343,4 +348,3 @@ header {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-
