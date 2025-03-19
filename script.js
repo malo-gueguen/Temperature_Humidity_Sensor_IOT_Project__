@@ -3,9 +3,7 @@ let valeurHum;
 let valeurTime;
 let ctx = document.getElementById("myChart").getContext("2d");
 let chart;
-// let inputUser = document.getElementById("inputUser").textContent;
-// let inputPassword = document.getElementById("inputPassword").textContent;
-//let sendButton = document.getElementById("sendButton")
+
 let notifPopUp = true;
 
 
@@ -40,17 +38,17 @@ async function fetchTemperature() {
     let compteur = 0;
     data.forEach((item) => {
       valeurTemp.push(item.Temperature);
-      // htmlvar2 += `${valeurTemp} °C `;
-      // if (valeurTemp.length < nbData) {
-      //     valeurTemp.push(item.Temperature);
-      // }
-      
-      compteur +=1;
-      if(compteur>4){
-        compteur =0;
-        let sum = 0;
-        valeurTemp
+      htmlvar2 += `${valeurTemp} °C `;
+      if (valeurTemp.length < nbData) {
+          valeurTemp.push(item.Temperature);
       }
+      
+      // compteur +=1;
+      // if(compteur>4){
+      //   compteur =0;
+      //   let sum = 0;
+      //   valeurTemp
+      // }
 
     });
     console.log(`Température : ${valeurTemp}`);
