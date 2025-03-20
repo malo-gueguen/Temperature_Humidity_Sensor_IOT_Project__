@@ -14,10 +14,10 @@
     <div id="modal">
       <form class="modalForm">
         <h1 id="SeConnecterh1">Se connecter</h1>
-        <h3 id="textidentifiant">Identifiant *</h3>
+        <h2 id="textidentifiant">Identifiant *</h2>
         <input id="inputUser" type="text" placeholder="Identifiant" onblur="this.placeholder='Identifiant'"
           onfocus="this.placeholder=''" required />
-        <h3 id="textmdp">Mot de passe *</h3>
+        <h2 id="textmdp">Mot de passe *</h2>
         <input id="inputPassword" type="password" placeholder="Mot de passe" onblur="this.placeholder='Mot de passe'"
           onfocus="this.placeholder=''" required />
         <button class="buttonStyle connexionButton" id="btn_conn">
@@ -35,10 +35,7 @@
         <div id="time"></div>
       </div>
       <div class="login-container" id="login_box">
-        <form id="loginForm">
           <button id="loginButton" type="button">Se connecter</button>
-        </form>
-        <button id="logoutButton">Se déconnecter</button>
       </div>
     </header>
     <section class="container">
@@ -63,10 +60,10 @@
       </div>
     </section>
     <section class="partage">
-      <img src="images/mail.png" onclick="ClicMail()" id="mail"></img>
-      <img src="images/facebook.jpg" onclick="ClicFacebook()" id="facebook"></img>
-      <img src="images/X.png" onclick="ClicX()" id="X"></img>
-      <img src="images/télécharger.png" onclick="exportToCSV()" id="telecharger">
+      <img src="images/mail.png" onclick="ClicMail()" id="mail" class="share"></img>
+      <img src="images/facebook.jpg" onclick="ClicFacebook()" id="facebook"  class="share"></img>
+      <img src="images/X.png" onclick="ClicX()" id="X"  class="share"></img>
+      <img src="images/télécharger.png" onclick="exportToCSV()" id="telecharger" class="share">
 
     </section>
   </section>
@@ -78,7 +75,7 @@
   <script src="modal.js"></script>
   <!-- <script src="customCursorIcon.js"></script>
     <script src="soundPlay.js"></script> -->
-  <script src="flashbang.js"></script>
+  <!-- <script src="flashbang.js"></script> -->
   <script src="share.js"></script>
 </body>
 

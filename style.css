@@ -64,6 +64,21 @@ body {
 
 }
 
+
+.modalForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+  font-size: large;
+} 
+
+.modalForm h1{
+  font-size:4rem;
+}
+
 #inputUser, #inputPassword{
   background-color: rgba(255, 255, 255, 1);
   color: #333;
@@ -97,15 +112,15 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 48px;
-  padding: 0 16px;
+  height: 12%;
+  width: 25%;
   border: none;
   border-radius: 6px;
   cursor: pointer;
 
   background: linear-gradient(to right, #87d6f2, #58c5ed);
   color: #fff;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
 
   box-shadow:
@@ -130,23 +145,13 @@ body {
   outline: none;
 }
 
+#inscription{
+  transition: transform 0.5s;
+}
 #inscription:hover{
   text-decoration: underline;
+  transform: scale(1.1);
 } 
-
- 
-.login-container {
-  display: flex;
-  flex-flow: column;
-  position: absolute;
-  max-width: 300px; 
-  border-radius: 10px;          
-  background-color: rgba(255, 255, 255, 0.2); 
-  text-align: center;          
-  color: #fff;  
-  top: 20px;             
-  right: 10px;
-}
 
 input{
   width: 50%;
@@ -157,22 +162,38 @@ input{
   font-size: 0.9rem;
 }
 
+.login-container {
+  position: absolute;
+  width: 12rem;
+  height: 5rem;
+  border-radius: 10px;          
+  text-align: center;          
+  top: 20px;             
+  right: 20px;
+}
+
 .login-container button {
-  width: 125px;
-  height: 50px;
-  padding: 5px;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
   margin-bottom: 10px;
+  text-align: center;
+  font-style: light;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   cursor: pointer;
-  font-size: 16px;
-  color: #fff;
-  background: linear-gradient(to right, #3B9DD4, #2C8BB8);
+  font-size: 1.5rem;
+  color: #fff; 
+  background: linear-gradient(to right, #4eacdf, #2C8BB8);
+  transition: transform 0.3s ease-in-out;
 }
 
 .login-container button:hover {
   border: 1px solid white;
-}
+  transform: scale(1.1) ;
+  box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
+  border: 50px black;
+} 
 
 #logoutButton{
   display: none;
@@ -180,12 +201,7 @@ input{
   margin-right: 20px;
 }
 
-.modalForm{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
-} 
+
 
 /*------END MODAL------*/
 /*------CONTAINER------*/
@@ -218,10 +234,10 @@ header {
   flex-flow: column;
   align-items: center;
   font-size: 3rem;
-} */
+} 
 
 /*------CERCLE------*/
-.cercle {
+.cercle{
   display: flex;
   justify-content: center;
   flex-flow: column;
@@ -238,13 +254,16 @@ header {
   text-align: center;
 }
 
-.hot{
+/* .hot{
   background: linear-gradient(to bottom, rgba(255, 165, 0, 0.9), rgba(255, 215, 0, 0.9));
-}
+} */
 
 /*------CHART------*/
 
 .chart{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   width:100%;
   margin-bottom: 2rem;
 }
@@ -253,15 +272,32 @@ header {
   visibility: hidden;
 } 
 
+.dataChange-container{
+  margin-left: 10rem;
+  width: 50%;
+}
+.dataChange-container input{
+  width: 50%;
+}
+
 /*------RESPONSIVE------*/
 
 
+
 .chart-wrapper {
-  max-width: 800px;  
-  margin: 0 auto;
-  margin-bottom: 2rem;
-  padding: 2rem;    
+  display: flex;
+  justify-content: center;
+  width: 70%;  
+  margin: auto;
 }
+@media (max-width: 1300px){
+  .buttonStyle{
+    font-size: 15px;
+    height: 8%;
+    width: 30%;
+  }
+}
+
 
 @media (max-width: 1100px) {
   header {
@@ -287,11 +323,34 @@ header {
   }
 }
 
+
+@media (max-width: 800px) {
+  .buttonStyle{
+    font-size:13px;
+    height: 15%;
+    width: 30%;
+  }
+}
+@media (max-width: 600px) {
+  .titre{
+    font-size: 2rem;
+  }
+  .buttonStyle{
+    font-size:13px;
+    height: 25%;
+    width: 50%;
+  }
+}
+
 @media (max-width: 450px) {
   .titre{
     font-size: 2rem;
   }
-}
+
+} 
+
+
+
 .flash-circle {
   position: absolute;
   width: 50px;

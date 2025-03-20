@@ -7,7 +7,7 @@ let chart;
 let notifPopUp = true;
 
 
-let nbData = 50;
+let nbData = 30;
 let labelsGraph = [];
 let sum=0;
 for (let i = 0; i < nbData; i++) {
@@ -221,11 +221,29 @@ function createGraph() {
       ],
     },
     options: {
+      plugins: {
+        legend: {
+            labels: {
+                font: {
+                    size: 30
+                }
+            }
+        }},
       hover: {
         mode: "index",
         intersect: false,
+        maintainAspectRatio: false,
       },
+     
       scales: {
+        x:{
+          ticks: {
+            autoSkip: true,
+            maxRotation:70,
+            minRotation:70,
+          }
+
+        },
         y: {
           beginAtZero: true,
           min: 1,
@@ -235,9 +253,9 @@ function createGraph() {
         },
       },
     },
-  });
+})};
   console.log("Graphique créé");
-}
+
 
 //    __  __       _       
 //   |  \/  |     (_)      
@@ -298,7 +316,7 @@ function createNotification() {
     body: text,
     icon: img,
   });
-}
+}}
 
 function notification(){
   if (!permissionGranted) {
@@ -408,4 +426,3 @@ async function displayWindowSize(){
 }
 window.addEventListener("resize", displayWindowSize);
 displayWindowSize();
-};

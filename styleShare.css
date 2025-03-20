@@ -4,32 +4,35 @@
     margin-bottom: 2rem;
     margin-top: 1rem;   
 }
-#mail{
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    width: 4%;
-    border-radius: 1rem;
-    margin-left: 1rem;
-  } 
+.share{
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  width: 4%;
+  border-radius: 1rem;
+  margin-left: 2rem;
+  transition: transform 0.3s ease-in-out;
+}
 
-  #facebook{
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    width: 4%;
-    border-radius: 1rem;
-    margin-left: 1rem;
-  } 
-  #X{
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    width: 4%;
-    border-radius: 1rem;
-    margin-left: 1rem;
-  } 
-  #telecharger{
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    width: 4%;
-    border-radius: 1rem;
-    margin-left: 1rem;
+.share:hover{
+  transform: scale(1.5) rotate(360deg);
+  box-shadow: rgba(80, 78, 78, 0.24) 0px 3px 8px;
+
+}
+
+@media (max-width: 1100px) {
+
+  .share{
+    width: 10%;
+
   }
+
+}
+
+@media (max-width: 450px) {
+
+  .share{
+    width: 15%;
+
+  }
+
+}
