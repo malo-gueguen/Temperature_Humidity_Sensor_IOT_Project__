@@ -20,6 +20,8 @@
     - LiquidCrystal
   - Gestion Cartes arduino :
     - ESP32 board package
+- FileZilla
+- AlwaysData
 ## 📝 Installation
 ### 1. Installation des Bibliothèques
 
