@@ -6,9 +6,9 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '../../../vendor/autoload.php';
 use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../..');
 $dotenv->load();
 try {
     $dsn = sprintf(
@@ -19,12 +19,11 @@ try {
     $pdo = new PDO($dsn, $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $request = $pdo->query("SELECT Datadt FROM datas ORDER BY id_data DESC");
+    $request = $pdo->query("SELECT Temperature FROM datas ORDER BY id_data DESC");
     $data = [];
     while ($row = $request->fetch(PDO::FETCH_ASSOC)) {
         $data[] = [
-            "Time" => $row['Datadt'],
-
+            "Temperature" => $row['Temperature'],
         ];
     }
 

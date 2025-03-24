@@ -4,12 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="styleShare.css">
+  <link rel="stylesheet" href="/FrontEnd/CSS/style.css">
+  <link rel="stylesheet" href="/FrontEnd/CSS/styleShare.css">
+  <link rel="icon" type="image/x-icon" href="/FrontEnd/images/favicon.ico" />
+
   <title>IoT_Project</title>
 </head>
 
 <body class="body">
+
   <div id="containerModal">
     <div id="modal">
       <form class="modalForm">
@@ -23,21 +26,26 @@
         <button class="buttonStyle connexionButton" id="btn_conn">
           Connexion
         </button>
-
         <h3 id="inscription">Pas de compte ? Inscrivez-vous ?</h3>
       </form>
     </div>
   </div>
+
+
+
+
   <section id="containerStation">
+
     <header>
       <div class="titre">
         <h1>Informations Météo</h1>
         <div id="time"></div>
       </div>
       <div class="login-container" id="login_box">
-          <button id="loginButton" type="button">Se connecter</button>
+        <button id="loginButton" type="button">Se connecter</button>
       </div>
     </header>
+
     <section class="container">
       <section class="container-data">
         <div class="cercle">
@@ -50,6 +58,9 @@
         </div>
       </section>
     </section>
+
+
+
     <section class="chart">
       <div class="dataChange-container hidden" id="nbDataSelector">
         <p>Entrez le nombre de données à afficher</p>
@@ -59,24 +70,25 @@
         <canvas id="myChart"></canvas>
       </div>
     </section>
-    <section class="partage">
-      <img src="images/mail.png" onclick="ClicMail()" id="mail" class="share"></img>
-      <img src="images/facebook.jpg" onclick="ClicFacebook()" id="facebook"  class="share"></img>
-      <img src="images/X.png" onclick="ClicX()" id="X"  class="share"></img>
-      <img src="images/télécharger.png" onclick="exportToCSV()" id="telecharger" class="share">
 
+    <section class="partage">
+      <img src="/FrontEnd/images/mail.png" onclick="ClicMail()" id="mail" class="share"></img>
+      <img src="/FrontEnd/images/facebook.jpg" onclick="ClicFacebook()" id="facebook" class="share"></img>
+      <img src="/FrontEnd/images/X.png" onclick="ClicX()" id="X" class="share"></img>
+      <img src="/FrontEnd/images/télécharger.png" onclick="exportToCSV()" id="telecharger" class="share">
     </section>
+
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="script.js"></script>
-  <script src="particles.js"></script>
-  <script src="keyboardEffect.js"></script>
-  <script src="modal.js"></script>
-  <!-- <script src="customCursorIcon.js"></script>
-    <script src="soundPlay.js"></script> -->
-  <!-- <script src="flashbang.js"></script> -->
-  <script src="share.js"></script>
+  <script src="/FrontEnd/JS/script.js"></script>
+  <script src="/FrontEnd/JS/particles.js"></script>
+  <script src="/FrontEnd/JS/keyboardEffect.js"></script>
+  <script src="/FrontEnd/JS/modal.js"></script>
+  <script src="/FrontEnd/JS/customCursorIcon.js"></script>
+    <script src="/FrontEnd/JS/soundPlay.js"></script> 
+ <script src="/FrontEnd/JS/flashbang.js"></script> 
+  <script src="/FrontEnd/JS/share.js"></script>
 </body>
 
 </html>

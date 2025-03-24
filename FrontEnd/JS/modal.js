@@ -1,4 +1,3 @@
-
 let btnConnexion = document.getElementById("btn_conn")
 let btnSubscription = document.querySelector(".subscriptionButton")
 let containerStation = document.getElementById("containerStation")
@@ -19,7 +18,7 @@ let connexionState = 0;
 //Vérification du compte existant lors de la connexion
 btnConnexion.addEventListener("click", async function fetchConnexion (){
     try {
-        const response = await fetch("https://iotcesi.alwaysdata.net/user_conn.php", {
+        const response = await fetch("https://iotcesi.alwaysdata.net/BackEnd/PHP/user_conn.php", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         });
@@ -131,7 +130,7 @@ inscription.addEventListener("click", function(e){
         console.log(inputUser)
         console.log(JSON.stringify(data))
 
-        fetch("./AddUser.php",
+        fetch("../../BackEnd/PHP/AddUser.php",
         {
         method: "POST",
         headers: { "Content-Type": "application/json" },

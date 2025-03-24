@@ -5,9 +5,9 @@ ini_set("display_errors", 1);
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '../../../vendor/autoload.php';
 use Dotenv\Dotenv;
-$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../..');
 $dotenv->load();
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {

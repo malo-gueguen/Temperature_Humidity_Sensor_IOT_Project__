@@ -3,36 +3,48 @@
     justify-content: center;
     margin-bottom: 2rem;
     margin-top: 1rem;   
+    gap: 2rem;
 }
 .share{
   margin-bottom: 2rem;
   margin-top: 2rem;
-  width: 4%;
+  width: 5rem;
   border-radius: 1rem;
-  margin-left: 2rem;
   transition: transform 0.3s ease-in-out;
 }
 
 .share:hover{
   transform: scale(1.5) rotate(360deg);
   box-shadow: rgba(80, 78, 78, 0.24) 0px 3px 8px;
-
 }
 
-@media (max-width: 1100px) {
-
+@media (max-width: 1200px) {
   .share{
-    width: 10%;
+    width: 5rem;
+  }
+}
 
+@media (max-width: 1024px) {
+  .share{
+    width: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .share{
+    width: 3rem;
   }
 
 }
 
-@media (max-width: 450px) {
-
+@media (max-width: 480px) {
   .share{
-    width: 15%;
-
+    width: 2.5rem;
+    transition: none;
   }
-
+  .partage{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0rem;
+  }
 }

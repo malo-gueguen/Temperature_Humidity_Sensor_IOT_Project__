@@ -27,7 +27,7 @@ for (let i = 0; i < nbData; i++) {
 
 async function fetchTemperature() {
   try {
-    const response = await fetch("https://iotcesi.alwaysdata.net/getTemp.php", {
+    const response = await fetch("https://iotcesi.alwaysdata.net/BackEnd/PHP/getTemp.php", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -51,7 +51,7 @@ async function fetchTemperature() {
       // }
 
     });
-    console.log(`Température : ${valeurTemp}`);
+    // console.log(`Température : ${valeurTemp}`);
     document.getElementById("temp").innerHTML = htmlvar2;
     updateTemperature();
   } catch (error) {
@@ -61,7 +61,7 @@ async function fetchTemperature() {
 
 async function fetchTime() {
   try {
-    const response = await fetch("https://iotcesi.alwaysdata.net/getTime.php", {
+    const response = await fetch("https://iotcesi.alwaysdata.net/BackEnd/PHP/getTime.php", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -79,7 +79,7 @@ async function fetchTime() {
 
 async function fetchHumidite() {
   try {
-    const response = await fetch("https://iotcesi.alwaysdata.net/getHum.php", {
+    const response = await fetch("https://iotcesi.alwaysdata.net/BackEnd/PHP/getHum.php", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -92,7 +92,7 @@ async function fetchHumidite() {
         valeurHum.push(item.Humidite);
       }
     });
-    console.log(`Humidité : ${valeurHum}`);
+    // console.log(`Humidité : ${valeurHum}`);
     document.getElementById("hum").innerHTML = htmlvar;
     updateHumidty();
 
@@ -194,6 +194,29 @@ function mettreAJourHeure() {
 //    \_____|_|  \___|\__,_|\__\___|  \__, |_|  \__,_| .__/|_| |_|
 //                                     __/ |         | |          
 //                                    |___/          |_|          
+let stepSize = 5;
+const responsiveLegendPlugin = {
+  id: 'responsiveLegendPlugin',
+  beforeLayout(chart) {
+    const chartWidth = chart.width;
+    let fontSize;
+
+    if (chartWidth < 480) {
+      fontSize = 12;
+    } else if (chartWidth < 768) {
+      fontSize = 14;
+    } else if (chartWidth < 1024) {
+      fontSize = 16;
+    } else {
+      fontSize = 30;
+    }
+
+    chart.options.plugins.legend.labels.font.size = fontSize;
+    }
+};
+
+// Enregistrement global du plugin
+Chart.register(responsiveLegendPlugin);
 
 function createGraph() {
   console.log("Création du graphique");
@@ -233,12 +256,13 @@ function createGraph() {
         mode: "index",
         intersect: false,
         maintainAspectRatio: false,
+
       },
      
       scales: {
         x:{
           ticks: {
-            autoSkip: true,
+            autoSkip: false,
             maxRotation:70,
             minRotation:70,
           }
@@ -248,7 +272,7 @@ function createGraph() {
           beginAtZero: true,
           min: 1,
           ticks: {
-            stepSize: 5,
+            stepSize: stepSize,
           },
         },
       },
@@ -300,40 +324,22 @@ setInterval(async () => {
 let permissionGranted = false;
 
 function createNotification() {
-Notification.requestPermission().then((permission) => {
-  if (permission === "granted") {
-    console.log("Permission notifications accordée");
-    permissionGranted = true;
-  } else {
-    console.log("Permission refusée ou ignorée");
-  }
-});
-
-function createNotification() {
-  const img = "/benjouk.jpg";
-  const text = "Il fait chaud";
-  const notification = new Notification("Le temps est : ",{
-    body: text,
-    icon: img,
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      console.log("Permission notifications accordée");
+      permissionGranted = true;
+      const img = "/benjouk.jpg";
+      const text = "Il fait chaud";
+      const notification = new Notification("Le temps est : ", {
+        body: text,
+        icon: img,
+      });
+    } else {
+      console.log("Permission refusée ou ignorée");
+    }
   });
-}}
+}
 
-function notification(){
-  if (!permissionGranted) {
-    console.log("Permission non accordée, demande en cours...");
-    Notification.requestPermission().then((permission) => {
-      if (permission === "granted" ) {  
-        if(valeurTemp > 25 ){
-          createNotification();
-        } 
-      } else {
-        console.log("L'utilisateur a refusé ou ignoré la demande de notification.");
-      }
-    }); 
-  } else {
-    createNotification();
-}
-}
 
 //    _                 _       
 //   | |               (_)      
@@ -348,17 +354,17 @@ const loginForm = document.getElementById("loginForm");
 const logoutButton = document.getElementById("logoutButton");
 
 
-logoutButton.addEventListener("click", async function() {
-  logoutButton.style.display = "none";
-  loginForm.style.display = "block";
-  nbDataSelector.classList.add("hidden");
-    nbData = 50;
-    await fetchTime();
-    if (chart) {
-      chart.destroy();
-    }
-    createGraph();
-});
+// logoutButton.addEventListener("click", async function() {
+//   logoutButton.style.display = "none";
+//   loginForm.style.display = "block";
+//   nbDataSelector.classList.add("hidden");
+//     nbData = 50;
+//     await fetchTime();
+//     if (chart) {
+//       chart.destroy();
+//     }
+//     createGraph();
+// });
 
 //     _____ _                              _ _      _ _   _  __                                   _   
 //    / ____| |                            ( | )    ( | ) (_)/ _|                                 | |  
@@ -401,12 +407,14 @@ async function displayWindowSize(){
   let w = document.documentElement.clientWidth;
   let h = document.documentElement.clientHeight;
   let oldstate= stateWindowSize;
+  console.log("test")
   if(w<700){
     nbData=5;
+    stepSize = 20;
     console.log(nbData)
     stateWindowSize =1;
   } else {
-    nbData=50;
+    nbData=30;
     console.log(nbData)
     stateWindowSize = 0;
   }
