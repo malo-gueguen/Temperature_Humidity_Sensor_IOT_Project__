@@ -123,8 +123,18 @@ btnConnexion.addEventListener("click", async (event) => {
       })
       .catch((error) => console.error("Erreur dans fetch :", error));
   } else {
+<<<<<<< HEAD
     console.log("connect in progress")
+=======
+<<<<<<< HEAD
+    //CONNEXION
+
+=======
+    console.log("connect in progress")
+>>>>>>> 78ffdcdce36e1b311c314fd6d31254d0096e3909
+>>>>>>> 7d185f2608716165b54412e1542476ba17308512
     try {
+      console.log("in try...")
       inputUser = document.getElementById("inputUser").value;
       inputPassword = document.getElementById("inputPassword").value;
       const response = await fetch(
@@ -136,6 +146,7 @@ btnConnexion.addEventListener("click", async (event) => {
       );
 
       const data = await response.json();
+      console.log("data recieved: ", data)
 
       data.forEach((item) => {
         if (inputUser == item.user && inputPassword == item.password) {
@@ -146,9 +157,14 @@ btnConnexion.addEventListener("click", async (event) => {
           ConnexionUser = true;
           closeModal();
         } else {
+          console.log("connexion abandonnée");
+
+          console.log("no match")
+
           document.getElementById("inputUser").value = "";
           document.getElementById("inputPassword").value = "";
         }
+        console.log("connect complete")
       });
     } catch (error) {
       console.error("Error in fetchConnexion: ", error);
