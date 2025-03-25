@@ -92,6 +92,8 @@ btnConnexion.addEventListener("click", async (event) => {
   //   console.log("testclicksubscription")
 
   if (btnConnexion.classList.contains("subscriptionButton")) {
+    //INSCRIPTION
+
     console.log("inscription en cours");
 
     let inputPassword = document.getElementById("inputPassword").value;
@@ -128,6 +130,8 @@ btnConnexion.addEventListener("click", async (event) => {
       })
       .catch((error) => console.error("Erreur dans fetch :", error));
   } else {
+    //CONNEXION
+
     try {
       const response = await fetch(
         "https://iotcesi.alwaysdata.net/BackEnd/PHP/user_conn.php",
@@ -149,6 +153,7 @@ btnConnexion.addEventListener("click", async (event) => {
           ConnexionUser = true;
           closeModal();
         } else {
+          console.log("connexion abandonnée");
           document.getElementById("inputUser").value = "";
           document.getElementById("inputPassword").value = "";
         }
