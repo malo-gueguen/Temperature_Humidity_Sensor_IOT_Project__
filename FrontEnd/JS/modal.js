@@ -36,6 +36,7 @@ sendButton.addEventListener("click", () => {
   if (ConnexionUser === true) {
     document.getElementById("nbDataSelector").classList.add("hidden");
     sendButton.textContent = "Se connecter";
+    location.reload();
   }
 });
 
@@ -88,13 +89,14 @@ inscription.addEventListener("click", function (e) {
 
 btnConnexion.addEventListener("click", async (event) => {
   event.preventDefault();
+  console.log("connect button clicked")
   //   console.log("testclicksubscription")
 
   if (btnConnexion.classList.contains("subscriptionButton")) {
     console.log("inscription en cours");
 
-    let inputPassword = document.getElementById("inputPassword").value;
-    let inputUser = document.getElementById("inputUser").value;
+    inputPassword = document.getElementById("inputPassword").value;
+    inputUser = document.getElementById("inputUser").value;
     // console.log("password =");
     // console.log(inputPassword);
     // console.log("user =");
@@ -127,7 +129,11 @@ btnConnexion.addEventListener("click", async (event) => {
       })
       .catch((error) => console.error("Erreur dans fetch :", error));
   } else {
+    console.log("connect in progress")
     try {
+      console.log("in try...")
+      inputUser = document.getElementById("inputUser").value;
+      inputPassword = document.getElementById("inputPassword").value;
       const response = await fetch(
         "https://iotcesi.alwaysdata.net/BackEnd/PHP/user_conn.php",
         {
@@ -137,6 +143,7 @@ btnConnexion.addEventListener("click", async (event) => {
       );
 
       const data = await response.json();
+      console.log("data recieved: ", data)
 
       data.forEach((item) => {
         if (inputUser == item.user && inputPassword == item.password) {
@@ -148,9 +155,11 @@ btnConnexion.addEventListener("click", async (event) => {
           ConnexionUser = true;
           closeModal();
         } else {
+          console.log("no match")
           document.getElementById("inputUser").value = "";
           document.getElementById("inputPassword").value = "";
         }
+        console.log("connect complete")
       });
     } catch (error) {
       console.error("Error in fetchConnexion: ", error);
