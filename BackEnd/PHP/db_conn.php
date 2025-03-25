@@ -8,8 +8,8 @@
         header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
         header("Access-Control-Allow-Headers: Content-Type");
 
-        require __DIR__ . '/vendor/autoload.php';
-        $dotenv = Dotenv::createImmutable(__DIR__);
+        require __DIR__ . '../../../vendor/autoload.php';
+        $dotenv = Dotenv::createImmutable(__DIR__ . '/../..');
         $dotenv->load();
         $dsn = sprintf(
             "mysql:host=%s;dbname=%s;charset=utf8mb4",

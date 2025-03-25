@@ -6,31 +6,31 @@ let chart;
 
 let notifPopUp = true;
 
-
-let nbData = 50;
+let nbData = 30;
 let labelsGraph = [];
-let sum=0;
+let sum = 0;
 for (let i = 0; i < nbData; i++) {
   labelsGraph.push("-");
 }
 
-
-//    ______   _       _     
-//   |  ____| | |     | |    
-//   | |__ ___| |_ ___| |__  
-//   |  __/ _ \ __/ __| '_ \ 
+//    ______   _       _
+//   |  ____| | |     | |
+//   | |__ ___| |_ ___| |__
+//   |  __/ _ \ __/ __| '_ \
 //   | | |  __/ || (__| | | |
 //   |_|  \___|\__\___|_| |_|
-//                           
-//                           
-
+//
+//
 
 async function fetchTemperature() {
   try {
-    const response = await fetch("https://iotcesi.alwaysdata.net/getTemp.php", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await fetch(
+      "https://iotcesi.alwaysdata.net/BackEnd/PHP/getTemp.php",
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     const data = await response.json();
     let htmlvar2 = "";
     valeurTemp = [];
@@ -40,16 +40,15 @@ async function fetchTemperature() {
       valeurTemp.push(item.Temperature);
       htmlvar2 += `${valeurTemp} °C `;
       if (valeurTemp.length < nbData) {
-          valeurTemp.push(item.Temperature);
+        valeurTemp.push(item.Temperature);
       }
-      
+
       // compteur +=1;
       // if(compteur>4){
       //   compteur =0;
       //   let sum = 0;
       //   valeurTemp
       // }
-
     });
     // console.log(`Température : ${valeurTemp}`);
     document.getElementById("temp").innerHTML = htmlvar2;
@@ -61,10 +60,13 @@ async function fetchTemperature() {
 
 async function fetchTime() {
   try {
-    const response = await fetch("https://iotcesi.alwaysdata.net/getTime.php", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await fetch(
+      "https://iotcesi.alwaysdata.net/BackEnd/PHP/getTime.php",
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     const data = await response.json();
     valeurTime = [];
     data.forEach((item) => {
@@ -79,10 +81,13 @@ async function fetchTime() {
 
 async function fetchHumidite() {
   try {
-    const response = await fetch("https://iotcesi.alwaysdata.net/getHum.php", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await fetch(
+      "https://iotcesi.alwaysdata.net/BackEnd/PHP/getHum.php",
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     const data = await response.json();
     let htmlvar = "";
     valeurHum = [];
@@ -104,14 +109,14 @@ async function fetchHumidite() {
   }
 }
 
-//    _    _           _       _       
-//   | |  | |         | |     | |      
-//   | |  | |_ __   __| | __ _| |_ ___ 
+//    _    _           _       _
+//   | |  | |         | |     | |
+//   | |  | |_ __   __| | __ _| |_ ___
 //   | |  | | '_ \ / _` |/ _` | __/ _ \
 //   | |__| | |_) | (_| | (_| | ||  __/
 //    \____/| .__/ \__,_|\__,_|\__\___|
-//          | |                        
-//          |_|                        
+//          | |
+//          |_|
 
 function updateTemperature() {
   let tempDiv = document.getElementById("temp");
@@ -122,7 +127,7 @@ function updateTemperature() {
   if (tempValue >= 25) {
     tempDiv.innerHTML = tempValue + "°C";
     message.innerHTML = "☀️ Il fait beau !";
-    if(notifPopUp == true){
+    if (notifPopUp == true) {
       // notification();
       notifPopUp = false;
     }
@@ -155,18 +160,16 @@ function updateHumidty() {
     container.classList.add("hot");
     message.innerHTML = "Sec 🌵";
   }
-
 }
 
-
-//    _    _                  
-//   | |  | |                 
-//   | |__| | ___  _   _ _ __ 
+//    _    _
+//   | |  | |
+//   | |__| | ___  _   _ _ __
 //   |  __  |/ _ \| | | | '__|
-//   | |  | | (_) | |_| | |   
-//   |_|  |_|\___/ \__,_|_|   
-//                            
-//                            
+//   | |  | | (_) | |_| | |
+//   |_|  |_|\___/ \__,_|_|
+//
+//
 
 function mettreAJourHeure() {
   const maintenant = new Date();
@@ -185,15 +188,37 @@ function mettreAJourHeure() {
     dateFormatee + " — " + heureFormatee;
 }
 
-
-//     _____                _                               _     
-//    / ____|              | |                             | |    
-//   | |     _ __ ___  __ _| |_ ___    __ _ _ __ __ _ _ __ | |__  
-//   | |    | '__/ _ \/ _` | __/ _ \  / _` | '__/ _` | '_ \| '_ \ 
+//     _____                _                               _
+//    / ____|              | |                             | |
+//   | |     _ __ ___  __ _| |_ ___    __ _ _ __ __ _ _ __ | |__
+//   | |    | '__/ _ \/ _` | __/ _ \  / _` | '__/ _` | '_ \| '_ \
 //   | |____| | |  __/ (_| | ||  __/ | (_| | | | (_| | |_) | | | |
 //    \_____|_|  \___|\__,_|\__\___|  \__, |_|  \__,_| .__/|_| |_|
-//                                     __/ |         | |          
-//                                    |___/          |_|          
+//                                     __/ |         | |
+//                                    |___/          |_|
+let stepSize = 5;
+const responsiveLegendPlugin = {
+  id: "responsiveLegendPlugin",
+  beforeLayout(chart) {
+    const chartWidth = chart.width;
+    let fontSize;
+
+    if (chartWidth < 480) {
+      fontSize = 12;
+    } else if (chartWidth < 768) {
+      fontSize = 14;
+    } else if (chartWidth < 1024) {
+      fontSize = 16;
+    } else {
+      fontSize = 30;
+    }
+
+    chart.options.plugins.legend.labels.font.size = fontSize;
+  },
+};
+
+// Enregistrement global du plugin
+Chart.register(responsiveLegendPlugin);
 
 function createGraph() {
   // console.log("Création du graphique");
@@ -221,16 +246,34 @@ function createGraph() {
       ],
     },
     options: {
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              size: 30,
+            },
+          },
+        },
+      },
       hover: {
         mode: "index",
         intersect: false,
+        maintainAspectRatio: false,
       },
+
       scales: {
+        x: {
+          ticks: {
+            autoSkip: false,
+            maxRotation: 70,
+            minRotation: 70,
+          },
+        },
         y: {
           beginAtZero: true,
           min: 1,
           ticks: {
-            stepSize: 5,
+            stepSize: stepSize,
           },
         },
       },
@@ -239,14 +282,14 @@ function createGraph() {
   // console.log("Graphique créé");
 }
 
-//    __  __       _       
-//   |  \/  |     (_)      
-//   | \  / | __ _ _ _ __  
-//   | |\/| |/ _` | | '_ \ 
+//    __  __       _
+//   |  \/  |     (_)
+//   | \  / | __ _ _ _ __
+//   | |\/| |/ _` | | '_ \
 //   | |  | | (_| | | | | |
 //   |_|  |_|\__,_|_|_| |_|
-//                         
-//                         
+//
+//
 
 async function main() {
   await fetchTemperature();
@@ -269,87 +312,66 @@ setInterval(async () => {
   createGraph();
 }, 10000);
 
-
-//    _   _       _   _  __ _           _   _             
-//   | \ | |     | | (_)/ _(_)         | | (_)            
-//   |  \| | ___ | |_ _| |_ _  ___ __ _| |_ _  ___  _ __  
-//   | . ` |/ _ \| __| |  _| |/ __/ _` | __| |/ _ \| '_ \ 
+//    _   _       _   _  __ _           _   _
+//   | \ | |     | | (_)/ _(_)         | | (_)
+//   |  \| | ___ | |_ _| |_ _  ___ __ _| |_ _  ___  _ __
+//   | . ` |/ _ \| __| |  _| |/ __/ _` | __| |/ _ \| '_ \
 //   | |\  | (_) | |_| | | | | (_| (_| | |_| | (_) | | | |
 //   |_| \_|\___/ \__|_|_| |_|\___\__,_|\__|_|\___/|_| |_|
-//                                                        
-//                                                        
+//
+//
 
 let permissionGranted = false;
 
 function createNotification() {
-Notification.requestPermission().then((permission) => {
-  if (permission === "granted") {
-    // console.log("Permission notifications accordée");
-    permissionGranted = true;
-  } else {
-    // console.log("Permission refusée ou ignorée");
-  }
-});
-
-function createNotification() {
-  const img = "/benjouk.jpg";
-  const text = "Il fait chaud";
-  const notification = new Notification("Le temps est : ",{
-    body: text,
-    icon: img,
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      console.log("Permission notifications accordée");
+      permissionGranted = true;
+      const img = "/benjouk.jpg";
+      const text = "Il fait chaud";
+      const notification = new Notification("Le temps est : ", {
+        body: text,
+        icon: img,
+      });
+    } else {
+      console.log("Permission refusée ou ignorée");
+    }
   });
 }
 
-function notification(){
-  if (!permissionGranted) {
-    // console.log("Permission non accordée, demande en cours...");
-    Notification.requestPermission().then((permission) => {
-      if (permission === "granted" ) {  
-        if(valeurTemp > 25 ){
-          createNotification();
-        } 
-      } else {
-        // console.log("L'utilisateur a refusé ou ignoré la demande de notification.");
-      }
-    }); 
-  } else {
-    createNotification();
-}
-}
-
-//    _                 _       
-//   | |               (_)      
-//   | |     ___   __ _ _ _ __  
-//   | |    / _ \ / _` | | '_ \ 
+//    _                 _
+//   | |               (_)
+//   | |     ___   __ _ _ _ __
+//   | |    / _ \ / _` | | '_ \
 //   | |___| (_) | (_| | | | | |
 //   |______\___/ \__, |_|_| |_|
-//                 __/ |        
-//                |___/                                         
+//                 __/ |
+//                |___/
 
 const loginForm = document.getElementById("loginForm");
 const logoutButton = document.getElementById("logoutButton");
 
+// logoutButton.addEventListener("click", async function() {
+//   logoutButton.style.display = "none";
+//   loginForm.style.display = "block";
+//   nbDataSelector.classList.add("hidden");
+//     nbData = 50;
+//     await fetchTime();
+//     if (chart) {
+//       chart.destroy();
+//     }
+//     createGraph();
+// });
 
-logoutButton.addEventListener("click", async function() {
-  logoutButton.style.display = "none";
-  loginForm.style.display = "block";
-  nbDataSelector.classList.add("hidden");
-    nbData = 50;
-    await fetchTime();
-    if (chart) {
-      chart.destroy();
-    }
-    createGraph();
-});
-
-//     _____ _                              _ _      _ _   _  __                                   _   
-//    / ____| |                            ( | )    ( | ) (_)/ _|                                 | |  
-//   | |    | |__   __ _ _ __   __ _  ___   V V__  __V V   _| |_    ___ ___  _ __  _ __   ___  ___| |_ 
+//     _____ _                              _ _      _ _   _  __                                   _
+//    / ____| |                            ( | )    ( | ) (_)/ _|                                 | |
+//   | |    | |__   __ _ _ __   __ _  ___   V V__  __V V   _| |_    ___ ___  _ __  _ __   ___  ___| |_
 //   | |    | '_ \ / _` | '_ \ / _` |/ _ \     \ \/ /     | |  _|  / __/ _ \| '_ \| '_ \ / _ \/ __| __|
-//   | |____| | | | (_| | | | | (_| |  __/      >  <      | | |   | (_| (_) | | | | | | |  __/ (__| |_ 
+//   | |____| | | | (_| | | | | (_| |  __/      >  <      | | |   | (_| (_) | | | | | | |  __/ (__| |_
 //    \_____|_| |_|\__,_|_| |_|\__, |\___|     /_/\_\     |_|_|    \___\___/|_| |_|_| |_|\___|\___|\__|
-//                              __/ |                                                                  
-//     
+//                              __/ |
+//
 //Permet de changer le nombre du x si on est connecté
 
 let changeDataSelector = document.getElementById("changeDataSelector");
@@ -366,46 +388,44 @@ changeDataSelector.addEventListener("keypress", async function (e) {
   }
 });
 
-
-//    _____           _                _                _    
-//   |  __ \         (_)              | |              | |   
-//   | |__) |___  ___ _ _______    ___| |__   __ _ _ __| |_  
-//   |  _  // _ \/ __| |_  / _ \  / __| '_ \ / _` | '__| __| 
-//   | | \ \  __/\__ \ |/ /  __/ | (__| | | | (_| | |  | |_  
-//   |_|  \_\___||___/_/___\___|  \___|_| |_|\__,_|_|   \__| 
-//                                                           
-//                                                           
+//    _____           _                _                _
+//   |  __ \         (_)              | |              | |
+//   | |__) |___  ___ _ _______    ___| |__   __ _ _ __| |_
+//   |  _  // _ \/ __| |_  / _ \  / __| '_ \ / _` | '__| __|
+//   | | \ \  __/\__ \ |/ /  __/ | (__| | | | (_| | |  | |_
+//   |_|  \_\___||___/_/___\___|  \___|_| |_|\__,_|_|   \__|
+//
+//
 // Change la taille du graph en fonction de la taille de l'écran
 
-
 let stateWindowSize = 0;
-async function displayWindowSize(){
+async function displayWindowSize() {
   let w = document.documentElement.clientWidth;
   let h = document.documentElement.clientHeight;
-  let oldstate= stateWindowSize;
-  if(w<700){
-    nbData=5;
-    // console.log(nbData)
-    stateWindowSize =1;
+  let oldstate = stateWindowSize;
+  console.log("test");
+  if (w < 700) {
+    nbData = 5;
+    stepSize = 20;
+    console.log(nbData);
+    stateWindowSize = 1;
   } else {
-    nbData=50;
-    // console.log(nbData)
+    nbData = 30;
+    console.log(nbData);
     stateWindowSize = 0;
   }
-  if (oldstate == stateWindowSize){
+  if (oldstate == stateWindowSize) {
     return;
   } else {
     await fetchTemperature();
     await fetchHumidite();
     await fetchTime();
-  
+
     if (chart) {
       chart.destroy();
     }
     createGraph();
   }
-
 }
 window.addEventListener("resize", displayWindowSize);
 displayWindowSize();
-};

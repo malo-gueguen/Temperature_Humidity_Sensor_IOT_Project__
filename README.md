@@ -20,6 +20,8 @@
     - LiquidCrystal
   - Gestion Cartes arduino :
     - ESP32 board package
+- FileZilla
+- AlwaysData
 ## 📝 Installation
 ### 1. Installation des Bibliothèques
 
@@ -88,7 +90,7 @@ LED+ → 5V
 
 LED- → GND
 
-## 🔧 Problèmes récurents
+## 🔧 Problème récurent
 1. L'IDE arduino ne détecte pas l'ESP32
 - Appuiez sur 🪟 + X → Gestionnaire de périphériques
 - Regardez sous Ports (COM & LPT)
@@ -96,7 +98,6 @@ LED- → GND
 - Si rien n’apparaît ou un périphérique est en erreur:
   -  installez le pilote ```https://www.silabs.com/documents/public/software/CP210x_VCP_Windows.zip```
   - Redémarrez votre PC après installation.
-2. ...
 ## 👨‍💻 Auteurs
 Lucas Raoul - @LucasRaoul
 

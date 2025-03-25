@@ -2,7 +2,7 @@
 #include <LiquidCrystal.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
-
+#include "time.h"
 
 #define DHTPIN 21
 #define DHTTYPE DHT22
@@ -15,8 +15,12 @@ DHT dht(DHTPIN, DHTTYPE);
 LiquidCrystal lcd(48,47,33,34,35,36);
 
 //Paramètres Wifi
-const char* ssid = "nom du wifi";
-const char* password = "mot de passe du wifi";
+const char* ssid = "Nom du wifi";
+const char* password = "Mot de passe";
+
+const char* ntpServer = "pool.ntp.org";
+const long  gmtOffset_sec = 3600;  // Adjust for your timezone
+const int   daylightOffset_sec = 3600;
 
 void setup() {
   Serial.begin(9600);
@@ -36,7 +40,7 @@ void setup() {
   Serial.println("\nConnecté au WiFi !");
   Serial.print("Adresse IP: ");
   Serial.println(WiFi.localIP());
-
+  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
  
  //capteur + LCD
   dht.begin();
@@ -55,6 +59,18 @@ void loop() {
     static unsigned long dernierChangement = 0; // Temps du dernier changement
     unsigned long tempsActuel = millis(); // Temps actuel
 
+
+    struct tm timeinfo;
+    if (!getLocalTime(&timeinfo)) {
+        Serial.println("Failed to obtain time");
+        return;
+    }
+    Serial.print("Current Local Time: ");
+    Serial.printf("%02d:%02d:%02d\n", timeinfo.tm_hour, timeinfo.tm_min, timeinfo.tm_sec);
+    int heure = timeinfo.tm_hour-1;
+    int min = timeinfo.tm_min;
+    int sec = timeinfo.tm_sec;
+
     // Vérifie si 3 secondes sont passées
     if (tempsActuel - dernierChangement >= 3000) {  
         modeAffichage = (modeAffichage + 1) % 2; // Passe au mode suivant (0 → 1 → 2 → 0)
@@ -68,11 +84,13 @@ void loop() {
         lcd.setCursor(0, 0);
         lcd.print("Temp: " + String(temperature) + "C");
         lcd.setCursor(0, 1);
-        lcd.print("Hum: " + String(humidite) + " %");
+        lcd.print("Hum: " + String(humidite) + "%");
     } 
     else if (modeAffichage == 1) {
         lcd.setCursor(0, 0);
         lcd.print("IP: " + WiFi.localIP().toString());
+        lcd.setCursor(0, 1);
+        lcd.print("Time: " + String(heure) + ":" + String(min) + ":" + String(sec));
     }
 
     delay(100); // Petite pause pour éviter une boucle trop rapide

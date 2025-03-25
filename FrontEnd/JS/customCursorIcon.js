@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.style.cursor = "none";
   
     const cursor = document.createElement("img");
-    cursor.src = "benjoukLeBeauCropResize.png";
+    cursor.src = "../images/benjoukLeBeauCropResize.png";
     cursor.style.position = "absolute";
     cursor.style.width = "64px";
     cursor.style.height = "64px";

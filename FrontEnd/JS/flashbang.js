@@ -19,7 +19,7 @@ function createCircle() {
 }
 
 function triggerFlashbang() {
-    let flashbangSound = new Audio("flashbang.mp3")
+    let flashbangSound = new Audio("../Audio/flashbang.mp3")
     flashbangSound.play()
     const flash = document.createElement("div");
     flash.classList.add("flashbang");
