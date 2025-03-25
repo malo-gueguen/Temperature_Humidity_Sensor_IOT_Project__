@@ -218,10 +218,10 @@ header {
   flex-flow: column;
   align-items: center;
   font-size: 3rem;
-} */
+} 
 
 /*------CERCLE------*/
-.cercle {
+.cercle{
   display: flex;
   justify-content: center;
   flex-flow: column;

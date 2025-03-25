@@ -51,7 +51,7 @@ async function fetchTemperature() {
       // }
 
     });
-    console.log(`Température : ${valeurTemp}`);
+    // console.log(`Température : ${valeurTemp}`);
     document.getElementById("temp").innerHTML = htmlvar2;
     updateTemperature();
   } catch (error) {
@@ -92,7 +92,7 @@ async function fetchHumidite() {
         valeurHum.push(item.Humidite);
       }
     });
-    console.log(`Humidité : ${valeurHum}`);
+    // console.log(`Humidité : ${valeurHum}`);
     document.getElementById("hum").innerHTML = htmlvar;
     updateHumidty();
 
@@ -196,7 +196,7 @@ function mettreAJourHeure() {
 //                                    |___/          |_|          
 
 function createGraph() {
-  console.log("Création du graphique");
+  // console.log("Création du graphique");
   chart = new Chart(ctx, {
     type: "line",
     data: {
@@ -236,7 +236,7 @@ function createGraph() {
       },
     },
   });
-  console.log("Graphique créé");
+  // console.log("Graphique créé");
 }
 
 //    __  __       _       
@@ -284,10 +284,10 @@ let permissionGranted = false;
 function createNotification() {
 Notification.requestPermission().then((permission) => {
   if (permission === "granted") {
-    console.log("Permission notifications accordée");
+    // console.log("Permission notifications accordée");
     permissionGranted = true;
   } else {
-    console.log("Permission refusée ou ignorée");
+    // console.log("Permission refusée ou ignorée");
   }
 });
 
@@ -302,14 +302,14 @@ function createNotification() {
 
 function notification(){
   if (!permissionGranted) {
-    console.log("Permission non accordée, demande en cours...");
+    // console.log("Permission non accordée, demande en cours...");
     Notification.requestPermission().then((permission) => {
       if (permission === "granted" ) {  
         if(valeurTemp > 25 ){
           createNotification();
         } 
       } else {
-        console.log("L'utilisateur a refusé ou ignoré la demande de notification.");
+        // console.log("L'utilisateur a refusé ou ignoré la demande de notification.");
       }
     }); 
   } else {
@@ -385,11 +385,11 @@ async function displayWindowSize(){
   let oldstate= stateWindowSize;
   if(w<700){
     nbData=5;
-    console.log(nbData)
+    // console.log(nbData)
     stateWindowSize =1;
   } else {
     nbData=50;
-    console.log(nbData)
+    // console.log(nbData)
     stateWindowSize = 0;
   }
   if (oldstate == stateWindowSize){
