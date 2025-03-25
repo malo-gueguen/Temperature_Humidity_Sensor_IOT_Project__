@@ -94,8 +94,6 @@ btnConnexion.addEventListener("click", async (event) => {
   if (btnConnexion.classList.contains("subscriptionButton")) {
     //INSCRIPTION
 
-    console.log("inscription en cours");
-
     inputPassword = document.getElementById("inputPassword").value;
     inputUser = document.getElementById("inputUser").value;
     // console.log("password =");
@@ -107,8 +105,6 @@ btnConnexion.addEventListener("click", async (event) => {
       password: inputPassword,
     };
 
-    console.log("json encodé = ", JSON.stringify(dataUser));
-
     fetch("https://iotcesi.alwaysdata.net/BackEnd/PHP/AddUser.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -116,28 +112,18 @@ btnConnexion.addEventListener("click", async (event) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Réponse du serveur :", data);
-
         if (data.status === "duplicate") {
           let inputUserDoublon = document.getElementById("inputUser");
           let inputPasswordDoublon = document.getElementById("inputPassword");
           inputUserDoublon.style.backgroundColor = "red";
           inputPasswordDoublon.style.backgroundColor = "red";
         } else if (data.status === "success") {
-          console.log("modal closed, inscription validée bb");
           closeModal();
         }
       })
       .catch((error) => console.error("Erreur dans fetch :", error));
   } else {
-<<<<<<< HEAD
-    //CONNEXION
-
-=======
-    console.log("connect in progress")
->>>>>>> 78ffdcdce36e1b311c314fd6d31254d0096e3909
     try {
-      console.log("in try...")
       inputUser = document.getElementById("inputUser").value;
       inputPassword = document.getElementById("inputPassword").value;
       const response = await fetch(
@@ -149,26 +135,19 @@ btnConnexion.addEventListener("click", async (event) => {
       );
 
       const data = await response.json();
-      console.log("data recieved: ", data)
 
       data.forEach((item) => {
         if (inputUser == item.user && inputPassword == item.password) {
           document.getElementById("inputUser").value = "";
           document.getElementById("inputPassword").value = "";
           document.getElementById("nbDataSelector").classList.remove("hidden");
-          console.log("connected");
           sendButton.textContent = "Se déconnecter";
           ConnexionUser = true;
           closeModal();
         } else {
-          console.log("connexion abandonnée");
-
-          console.log("no match")
-
           document.getElementById("inputUser").value = "";
           document.getElementById("inputPassword").value = "";
         }
-        console.log("connect complete")
       });
     } catch (error) {
       console.error("Error in fetchConnexion: ", error);
