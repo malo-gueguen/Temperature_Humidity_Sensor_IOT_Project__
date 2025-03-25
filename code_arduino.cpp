@@ -69,8 +69,10 @@ void loop() {
     }
     else{
       compteur=0;
-      moyenneHumB=moyenneHumA/5;
-      moyenneTempB=moyenneTempA/5;
+      moyenneHumB=moyenneHumA/6;
+      moyenneTempB=moyenneTempA/6;
+      moyenneTempA=0;
+      moyenneHumA=0;
     }
      
 
@@ -115,10 +117,10 @@ void loop() {
 
 
 // Requête GET
-  if (WiFi.status() == WL_CONNECTED) { // Vérifie si le WiFi est connecté
+  if (WiFi.status() == WL_CONNECTED && moyenneHumB>0) { // Vérifie si le WiFi est connecté
     HTTPClient http;
     String serverUrl = "http://iotcesi.alwaysdata.net/BackEnd/PHP/postData.php"; 
-    String url = serverUrl + "?temperature=" + String(temperature) + "&humidite=" + String(humidite);
+    String url = serverUrl + "?temperature=" + String(moyenneTempB) + "&humidite=" + String(moyenneHumB);
     http.begin(url);
     Serial.println("📡 URL envoyée : " + url);
 
