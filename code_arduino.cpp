@@ -1,4 +1,3 @@
-#include "DHT.h"
 #include <LiquidCrystal.h>
 #include <WiFi.h>
 #include <HTTPClient.h>
@@ -15,8 +14,8 @@ DHT dht(DHTPIN, DHTTYPE);
 LiquidCrystal lcd(48,47,33,34,35,36);
 
 //Paramètres Wifi
-const char* ssid = "iPhone de Malo";
-const char* password = "malogueguen";
+const char* ssid = "nom du réseau";
+const char* password = "mot de passe";
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 3600;  // Adjust for your timezone
 const int   daylightOffset_sec = 3600;
