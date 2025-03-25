@@ -15,12 +15,16 @@ DHT dht(DHTPIN, DHTTYPE);
 LiquidCrystal lcd(48,47,33,34,35,36);
 
 //Paramètres Wifi
-const char* ssid = "Nom du wifi";
-const char* password = "Mot de passe";
-
+const char* ssid = "iPhone de Malo";
+const char* password = "malogueguen";
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 3600;  // Adjust for your timezone
 const int   daylightOffset_sec = 3600;
+int compteur=0;
+float moyenneTempA =0;
+float moyenneHumA =0;
+float moyenneTempB =0;
+float moyenneHumB =0;
 
 void setup() {
   Serial.begin(9600);
@@ -58,6 +62,17 @@ void loop() {
     static int modeAffichage = 0;  // Variable pour alterner l'affichage
     static unsigned long dernierChangement = 0; // Temps du dernier changement
     unsigned long tempsActuel = millis(); // Temps actuel
+    compteur++;
+    if (compteur<=5){
+      moyenneHumA=moyenneHumA+humidite;
+      moyenneTempA=moyenneTempA+temperature;
+    }
+    else{
+      compteur=0;
+      moyenneHumB=moyenneHumA/5;
+      moyenneTempB=moyenneTempA/5;
+    }
+     
 
 
     struct tm timeinfo;
@@ -65,6 +80,7 @@ void loop() {
         Serial.println("Failed to obtain time");
         return;
     }
+
     Serial.print("Current Local Time: ");
     Serial.printf("%02d:%02d:%02d\n", timeinfo.tm_hour, timeinfo.tm_min, timeinfo.tm_sec);
     int heure = timeinfo.tm_hour-1;
@@ -82,9 +98,9 @@ void loop() {
     
     if (modeAffichage == 0) {
         lcd.setCursor(0, 0);
-        lcd.print("Temp: " + String(temperature) + "C");
+        lcd.print("Temp: " + String(moyenneTempB) + "C");
         lcd.setCursor(0, 1);
-        lcd.print("Hum: " + String(humidite) + "%");
+        lcd.print("Hum: " + String(moyenneHumB) + "%");
     } 
     else if (modeAffichage == 1) {
         lcd.setCursor(0, 0);
@@ -93,7 +109,7 @@ void loop() {
         lcd.print("Time: " + String(heure) + ":" + String(min) + ":" + String(sec));
     }
 
-    delay(100); // Petite pause pour éviter une boucle trop rapide
+    delay(100); 
 
 
 
@@ -101,8 +117,8 @@ void loop() {
 // Requête GET
   if (WiFi.status() == WL_CONNECTED) { // Vérifie si le WiFi est connecté
     HTTPClient http;
-    String serverUrl = "http://iotcesi.alwaysdata.net/postData.php"; 
-    String url = serverUrl + "?temperature=" + String(temperature) + "&humidite=" + String(humidite);// Remplace par ton URL
+    String serverUrl = "http://iotcesi.alwaysdata.net/BackEnd/PHP/postData.php"; 
+    String url = serverUrl + "?temperature=" + String(temperature) + "&humidite=" + String(humidite);
     http.begin(url);
     Serial.println("📡 URL envoyée : " + url);
 
