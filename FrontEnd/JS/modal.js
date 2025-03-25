@@ -36,6 +36,7 @@ sendButton.addEventListener("click", () => {
   if (ConnexionUser === true) {
     document.getElementById("nbDataSelector").classList.add("hidden");
     sendButton.textContent = "Se connecter";
+    location.reload();
   }
 });
 
