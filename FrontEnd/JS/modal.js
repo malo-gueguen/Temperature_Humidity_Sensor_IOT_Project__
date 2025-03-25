@@ -130,12 +130,7 @@ btnConnexion.addEventListener("click", async (event) => {
       })
       .catch((error) => console.error("Erreur dans fetch :", error));
   } else {
-<<<<<<< HEAD
-    //CONNEXION
-
-=======
     console.log("connect in progress")
->>>>>>> 78ffdcdce36e1b311c314fd6d31254d0096e3909
     try {
       console.log("in try...")
       inputUser = document.getElementById("inputUser").value;

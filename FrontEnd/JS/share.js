@@ -51,7 +51,7 @@ function exportToCSV() {
     let csvContent = "data:text/csv;charset=utf-8,";
     csvContent += "Heure;Temperature;Humidite\n"; // En-tête du fichier CSV
   
-    // Remplir les données (assure-toi que les tableaux ont la même longueur)
+    // Remplir les données 
     for (let i = 0; i < valeurTime.length; i++) {
       let time = valeurTime[i] || "-";
       let temp = valeurTemp[i] || "-";

@@ -28,7 +28,7 @@ function triggerFlashbang() {
     const img = document.createElement("img");
     const nbImg = 5;
     let image = Math.floor(Math.random() * nbImg)
-    img.src = "./fb_images/" + image + ".png";
+    img.src = "../fb_images/" + image + ".png";
     img.classList.add("flash-image");
     document.body.appendChild(img);
     
